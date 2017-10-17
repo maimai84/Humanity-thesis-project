@@ -1,5 +1,5 @@
-export const Events = sequelize.define('Events', {
-  Name: {
+module.exports = sequelize.define('Events', {
+  name: {
     type: Sequelize.STRING,
     allowNull:false,
     uniqe:true
@@ -10,7 +10,7 @@ export const Events = sequelize.define('Events', {
   location:{
   	type:Sequelize.STRING
   },
-  organazation:{
+  org_id:{
   	type:Sequelize.STRING
   }
 });
