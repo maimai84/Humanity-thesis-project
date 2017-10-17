@@ -1,11 +1,10 @@
-import const {Users, Events, Orgs} from '../database/main.js';
-import express , {router} from 'express';
-import do from './controllers.js';
-const router = router();
+const {Users, Events, Orgs} = require('../database/main.js');
+var express , {router} = require('express');
+var doo = require('./controllers.js');
+const routerer = router();
 
-router.route('/someEndPoint')
-	.get(do.someFuncInsideControllers)
-	.post(do.anotherFunc)
+routerer.route('/someEndPoint')
+	.get(doo.someFuncInsideControllers)
+	.post(doo.anotherFunc)
 
-
-export default router;
+module.exports = routerer;
