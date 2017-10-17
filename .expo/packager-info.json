@@ -1,8 +1,12 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< 8bbd8bc3bc0cee913ee90242ddfb951eac25a5e8
   "packagerPid": 13029,
   "expoServerNgrokUrl": "https://gk-zms.maimai84.humanity-thesis-project.exp.direct",
   "packagerNgrokUrl": "https://packager.gk-zms.maimai84.humanity-thesis-project.exp.direct",
   "ngrokPid": 12991
+=======
+  "packagerPid": 15201
+>>>>>>> fetching from ammar
 }
