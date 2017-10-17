@@ -1,24 +1,24 @@
-import express from 'express';
+var express = require('express');
 const app = express();
 
-import morgan from 'morgan'; //display req in terminal ..
+var morgan = require('morgan'); //display req in terminal ..
 app.use(morgan('dev'));
 
 //APIs request , if needed
-import request from 'request'; 
+var request = require('request'); 
 
 //read req body data 
-import bodyParser from 'body-parser';  
+var bodyParser = require('body-parser');  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 //passwords in/de-crypting ..
-//import bcrypt from 'bcrypt'; 
+//import bcrypt = require('bcrypt'; 
 
 //for log-in/out sessions
-import session from 'express-session'; 
+var session = require('express-session'); 
 app.use(session({
     secret: "ptb",
     resave: false,
@@ -26,19 +26,19 @@ app.use(session({
 }));
 
 //for sessions
-import cookieParser from 'cookie-parser'; 
+var cookieParser = require('cookie-parser'); 
 app.use(cookieParser());
 
 //users router for now ...
-import usersRouter from './usersRoute.js';
+var usersRouter = require('./usersRoute.js');
 app.use('/users', usersRouter);
 
 //orgs router for now ...
-import orgsRouter from './orgsRoute.js';
+var orgsRouter = require('./orgsRoute.js');
 app.use('/orgs', orgsRouter);
 
 //events router for now ...
-import eventsRouter from './eventsRoute.js';
+var eventsRouter = require('./eventsRoute.js');
 app.use('/events', eventsRouter);
 
 // Add headers
