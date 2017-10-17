@@ -1,5 +1,5 @@
-export const Orgs = sequelize.define('Orgs', {
-  Name: {
+module.exports = sequelize.define('Orgs', {
+  name: {
     type: Sequelize.STRING,
     allowNull:false,
     uniqe:true

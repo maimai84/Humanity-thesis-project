@@ -1,4 +1,4 @@
-export const sequelize = new Sequelize('humanity', 'root', '', {
+exports.sequelize = new Sequelize('humanity', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
