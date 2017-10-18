@@ -1,16 +1,11 @@
 var Sequelize = require('sequelize');
 var sequelize = require('./../main.js');
 
-var schema = sequelize.define('Events', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull:false,
-    uniqe:true
-  },
-  description: {
+var schema = sequelize.define('OrgsEvents', {
+  event_id: {
     type: Sequelize.STRING
   },
-  location:{
+  user_id:{
   	type:Sequelize.STRING
   },
   org_id:{
