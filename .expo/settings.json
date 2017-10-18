@@ -1,13 +1,9 @@
 {
   "hostType": "tunnel",
   "lanType": "ip",
-  "dev": false,
+  "dev": true,
   "strict": false,
   "minify": false,
   "urlType": "exp",
-<<<<<<< HEAD
-  "urlRandomness": "8p-3tr"
-=======
-  "urlRandomness": "c6-tvr"
->>>>>>> 9bda1b36b73c0f907f4a7d9581ee2a4a15ac67c6
+  "urlRandomness": "dc-u9i"
 }
