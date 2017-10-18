@@ -2,15 +2,12 @@ import React from 'react';
 import { StyleSheet,
         Text, View ,
         TouchableOpacity } from 'react-native';
-
+import list from './user'
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text> Hello world</Text>
-        <Text>Humanity team us do the best</Text>
-        <Text>Hi Ammar</Text>
-      </View>
+    
+    <list/>
     );
   }
 }

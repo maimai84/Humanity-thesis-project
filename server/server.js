@@ -21,25 +21,13 @@ app.use(bodyParser.urlencoded({
 var session = require('express-session'); 
 app.use(session({
     secret: "ptb",
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 
 //for sessions
 var cookieParser = require('cookie-parser'); 
 app.use(cookieParser());
-
-//users router for now ...
-var usersRouter = require('./usersRoute.js');
-app.use('/users', usersRouter);
-
-//orgs router for now ...
-var orgsRouter = require('./orgsRoute.js');
-app.use('/orgs', orgsRouter);
-
-//events router for now ...
-var eventsRouter = require('./eventsRoute.js');
-app.use('/events', eventsRouter);
 
 // Add headers
 app.use(function (req, res, next) {
@@ -61,8 +49,47 @@ app.use(function (req, res, next) {
    next();
 });
 
+//users router for now ...
+var usersRouter = require('./usersRoute.js');
+app.get('/users/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(6);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  usersRouter['get'][subEndPoint](req, res);
+});
+app.post('/users/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(6);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  usersRouter['post'][subEndPoint](req, res);
+});
 
-var port = process.env.PORT || 3333
+//orgs router for now ...
+var orgsRouter = require('./orgsRoute.js');
+app.get('/orgs/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(5);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  eventsRouter['get'][subEndPoint](req, res);
+});
+app.post('/orgs/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(5);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  eventsRouter['post'][subEndPoint](req, res);
+});
+
+//events router for now ...
+var eventsRouter = require('./eventsRoute.js');
+app.get('/events/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(7);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  eventsRouter['get'][subEndPoint](req, res);
+});
+app.post('/events/*', (req, res) => {
+  var subEndPoint = req.originalUrl.substring(7);
+  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
+  eventsRouter['post'][subEndPoint](req, res);
+});
+
+
+var port = process.env.PORT || 3336
 var listener = app.listen(port , () => {
 	const { address, port } = listener.address();
 	console.log(`listining on http://${address}:${port}`);
