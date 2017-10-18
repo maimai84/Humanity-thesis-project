@@ -1,0 +1,16 @@
+{
+<<<<<<< HEAD
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
+=======
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "expoServerNgrokUrl": "https://gk-zms.maimai84.humanity-thesis-project.exp.direct",
+  "packagerNgrokUrl": "https://packager.gk-zms.maimai84.humanity-thesis-project.exp.direct",
+  "ngrokPid": 12991
+>>>>>>> 9bda1b36b73c0f907f4a7d9581ee2a4a15ac67c6
+}
