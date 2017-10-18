@@ -3,16 +3,32 @@ const db = require('../database/main.js');
 module.exports = {
   get : {
     '/' : (req, res) => {
-      console.log('Users : ', Users)
-      var allUsers =  Users.find();
-      res.send(allUsers);
+      var allUsers =  Users.find({})
+      allUsers
+        .then((data) => {
+          console.log('data : ', data);
+          res.send(data);
+        })
+        .catch((err) => {
+          console.log('error getting users : ' , err);
+          res.send("[]");
+        })
     }
   },
   post : {
     '/signup' : (req, res) => {
       var info = req.body;
       console.log(info);
-      res.send('recieved');
+      Users.build(info)
+        .save()
+        .then(() => {
+          res.send(`recieved user : ${info} and saved`);
+        })
+        .catch(() => {
+          res.send(`recieved user : ${info} but not saved saved`);
+        })
+
+      
       //add info to db ..
     }
   }

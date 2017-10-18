@@ -19,10 +19,11 @@ var schema = sequelize.define('Events', {
 });
 
 schema.sync({ alter: true })
+  .then((data) => {
+    console.log('Events table created successfuly');
+  })
   .catch((err) => {
     console.log(err)
-  }).then((data) => {
-    console.log('Events table created successfuly');
-  });
+  })
 
 module.exports = schema;
