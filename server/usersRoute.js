@@ -1,35 +1,53 @@
 const Users = require('../database/comp/users.js');
-const db = require('../database/main.js');
+
 module.exports = {
   get : {
-    '/' : (req, res) => {
-      var allUsers =  Users.find({})
-      allUsers
+    '/' : (req, res, cb) => {
+      Users.find({})
         .then((data) => {
-          console.log('data : ', data);
-          res.send(data);
+          cb(data);
         })
         .catch((err) => {
           console.log('error getting users : ' , err);
-          res.send("[]");
+          cb([]);
         })
+    },
+    '/signout' : (req, res, cb) => {
+      req.session.destroy((err) => {
+        if (err) {
+          console.log('error destroying session !!');
+          cb(false);
+        } else {
+          cb(true);
+        }
+      })
     }
   },
   post : {
-    '/signup' : (req, res) => {
+    '/signin' : (req, res, cb) => {
+      var info = req.body;
+      //check db for user 
+      Users.find({where : {name : info.name , password : info.password}})
+        .then((user) => {
+          console.log('signing in for : ', user.get('name') , ' : ' , !!user);
+          cb(!!user);
+        })
+        .catch((err) => {
+          cb('err =========> '+err);          
+        })
+    },
+    '/signup' : (req, res, cb) => {
       var info = req.body;
       console.log(info);
       Users.build(info)
+        //add info to db ..
         .save()
         .then(() => {
-          res.send(`recieved user : ${info} and saved`);
+          cb(`recieved user : ${info} and saved`);
         })
         .catch(() => {
-          res.send(`recieved user : ${info} but not saved saved`);
-        })
-
-      
-      //add info to db ..
+          cb(`recieved user : ${info} but not saved saved`);
+        })      
     }
   }
 }
@@ -50,15 +68,4 @@ item1.save().complete(function (err) {
  }
 });
  
-//Other way: Immediate insertion of data into database
-sequelize.sync().success(function () {
-  Item.create({
-     id: 2,
-     name:'Cell Phone',
-     description: 'Sony',
-     qty: 20
-  }).success(function (data) {
-  console.log(data.values)
- })
-});
 */
