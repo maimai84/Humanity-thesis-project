@@ -1,18 +1,23 @@
 const Events = require('../database/comp/events.js');
 
 module.exports = {
-	get : {
-		'/' : (req, res) => {
-			console.log('inside get/events/ ...');
-			//should get all event in db
-			res.send('hi there');
-		}
-	},
-	post : {
-		'/anotherEndPoint' : (req, res) => {
+    get : {
+        '/' : (req, res, cb) => {
+          Events.find({})
+            .then((data) => {
+              cb(data);
+            })
+            .catch((err) => {
+              console.log('error getting Events : ' , err);
+              cb([]);
+            })
+        }
+    },
+    post : {
+        '/anotherEndPoint' : (req, res) => {
 
-		}
-	}
+        }
+    }
 }
 
 /*
@@ -48,12 +53,12 @@ Item.find({where:{name:'Laptop'}}).complete(function (err, data) {
     console.log(err);
   }
   if(data){
-  	data.destroy({}) or 
+      data.destroy({}) or 
     data.updateAttributes({
-	    name:'Computer'
-	  }).success(function (data1) {
-	    console.log(data1);
-	  })
+        name:'Computer'
+      }).success(function (data1) {
+        console.log(data1);
+      })
  }
 });
 
