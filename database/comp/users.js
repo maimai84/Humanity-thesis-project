@@ -1,4 +1,7 @@
-module.exports = sequelize.define('Users', {
+var Sequelize = require('sequelize');
+var sequelize = require('./../main.js');
+
+var schema = sequelize.define('Users', {
   name: {
     type: Sequelize.STRING,
      allowNull:false,
@@ -9,9 +12,20 @@ module.exports = sequelize.define('Users', {
     allowNull:false
   },
   email:{
-  	type:Sequelize.STRING
+    type:Sequelize.STRING
   },
   rate:{
-  	type:Sequelize.STRING
+    type:Sequelize.STRING
   }
 });
+var a ; 
+schema.sync({ alter: true })
+  .catch((err) => {
+    console.log(err)
+  }).then((data) => {
+    a = data 
+    console.log(data , ' : data ');
+    console.log('users table created successfuly');
+  });
+
+module.exports = a;
