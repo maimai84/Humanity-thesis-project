@@ -23,6 +23,8 @@ export default class App extends React.Component {
         <Text>Fill your infromations and press sign in</Text>
         <Text>to see your profile or the events.</Text>
       </KeyboardAvoidingView>
+      <list/>
+
     );
   }
 }
