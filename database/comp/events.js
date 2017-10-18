@@ -1,5 +1,8 @@
-export const Events = sequelize.define('Events', {
-  Name: {
+var Sequelize = require('sequelize');
+var sequelize = require('./../main.js');
+
+var schema = sequelize.define('Events', {
+  name: {
     type: Sequelize.STRING,
     allowNull:false,
     uniqe:true
@@ -10,7 +13,16 @@ export const Events = sequelize.define('Events', {
   location:{
   	type:Sequelize.STRING
   },
-  organazation:{
+  org_id:{
   	type:Sequelize.STRING
   }
 });
+
+schema.sync({ alter: true })
+  .catch((err) => {
+    console.log(err)
+  }).then((data) => {
+    console.log('Events table created successfuly');
+  });
+
+module.exports = schema;

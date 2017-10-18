@@ -1,10 +1,14 @@
-const {Users, Events, Orgs} = require('../database/main.js');
-var express , {router} = require('express');
-var doo = require('./controllers.js');
-const routerer = router();
+const Orgs = require('../database/comp/orgs.js');
 
-routerer.route('/someEndPoint')
-	.get(doo.someFuncInsideControllers)
-	.post(doo.anotherFunc)
+module.exports = {
+	get : {
+		'/someEndPoint' : (req, res) => {
 
-module.exports = routerer;
+		}
+	},
+	post : {
+		'/anotherEndPoint' : (req, res) => {
+
+		}
+	}
+}
