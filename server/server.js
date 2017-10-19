@@ -70,7 +70,7 @@ app.post('/users/signin', (req, res) => {
     //create the session here ....
     console.log(data)
     if (data) {
-      req.session.username = req.body.name;
+      req.session.username = req.body.username;
       req.session.password = req.body.password;
       console.log('session : ', req.session);
       res.send('"signed in"');

@@ -3,8 +3,9 @@ const Users = require('../database/comp/users.js');
 module.exports = {
   get : {
     '/' : (req, res, cb) => {
-      Users.find({})
+      Users.findAll()
         .then((data) => {
+          console.log('found : ' , data.length , ' users ...');
           cb(data);
         })
         .catch((err) => {
@@ -27,26 +28,28 @@ module.exports = {
     '/signin' : (req, res, cb) => {
       var info = req.body;
       //check db for user 
-      Users.find({where : {name : info.name , password : info.password}})
+      console.log('info :  ', info);
+      Users.find({where : {username : info.username , password : info.password}})
         .then((user) => {
-          console.log('signing in for : ', user.get('name') , ' : ' , !!user);
           cb(!!user);
         })
-        .catch((err) => {
-          cb('err =========> '+err);          
+        .catch((err , user) => {
+          cb(false);          
         })
     },
     '/signup' : (req, res, cb) => {
       var info = req.body;
       console.log(info);
+      console.log(typeof info);
       Users.build(info)
-        //add info to db ..
         .save()
-        .then(() => {
-          cb(`recieved user : ${info} and saved`);
+        .then((data) => {
+          var m = "recieved user : " + data + " and saved !!"
+          cb({message : m});
         })
-        .catch(() => {
-          cb(`recieved user : ${info} but not saved saved`);
+        .catch((err) => {
+          var m = "recieved user : " + info + " but not saved coz : " + err.message;
+          cb({message : m});
         })      
     }
   }
