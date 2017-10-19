@@ -3,7 +3,7 @@ const Orgs = require('../database/comp/orgs.js');
 module.exports = {
   get : {
     '/' : (req, res, cb) => {
-      Orgs.find({})
+      Orgs.findAll()
         .then((data) => {
           cb(data);
         })

@@ -3,7 +3,7 @@ const Events = require('../database/comp/events.js');
 module.exports = {
     get : {
         '/' : (req, res, cb) => {
-          Events.find({})
+          Events.findAll()
             .then((data) => {
               cb(data);
             })
@@ -14,7 +14,7 @@ module.exports = {
         }
     },
     post : {
-        '/anotherEndPoint' : (req, res) => {
+        '/create' : (req, res) => {
 
         }
     }

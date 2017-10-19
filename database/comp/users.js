@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 var sequelize = require('./../main.js');
 
 var schema = sequelize.define('Users', {
-  name: {
+  username: {
     type: Sequelize.STRING,
     allowNull:false,
     uniqe:true
@@ -27,16 +27,26 @@ var schema = sequelize.define('Users', {
 //     console.log(err)
 //   })
 
-// schema.build({
-//   name : 'ashar is here !!',
-//   password : 'ashar is here !!'
-// })
-//   .save()
-//   .then(() => {
-//     console.log(`saved`);
+// schema.findAll({where:{username:'Ammar'}})
+//   .then(function (err, data) {
+//   data.destroy({})
+//     .then(function (data1) {
+//       console.log('destroyed data');
+//     })
 //   })
 //   .catch((err) => {
-//     console.log(`not saved saved ${err}`);
+//     console.log('error destroying : ' , err.message);
+//   })
+
+// schema.findAll({where:{username:''}})
+//   .then(function (data) {
+//     data.destroy({})
+//       .then(function (data1) {
+//         console.log('destroyed data');
+//       })
+//   })
+//   .catch((err) => {
+//     console.log('error destroying : ' , err.message);
 //   })
 
 module.exports = schema;
