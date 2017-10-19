@@ -57,7 +57,6 @@
 //       color: '#4f603c'
 //    }
 // })
-mport React, { Component } from 'react'
 import {  View, TouchableOpacity } from 'react-native'
 
 class List extends Component {
