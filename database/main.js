@@ -24,7 +24,7 @@ const sequelize = new Sequelize('sql12200128', 'sql12200128', 'Fjmu4tLdv5' , {
 //Checking connection status
 sequelize.authenticate()
 	.then(function(err) {
-		console.log('Connection has been established successfully');
+		console.log('Connection to database has been established successfully');
 	})
 	.catch(function (err) {
 	    console.log('There is connection in ERROR', err);
