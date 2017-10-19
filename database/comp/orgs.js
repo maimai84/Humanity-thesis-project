@@ -1,4 +1,7 @@
-module.exports = sequelize.define('Orgs', {
+var Sequelize = require('sequelize');
+var sequelize = require('./../main.js');
+
+var schema = sequelize.define('Orgs', {
   name: {
     type: Sequelize.STRING,
     allowNull:false,
@@ -19,3 +22,14 @@ module.exports = sequelize.define('Orgs', {
   },
  
 });
+
+
+// schema.sync({ alter: true })
+//   .then((data) => {
+//     console.log('Orgs table created successfuly');
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
+
+module.exports = schema;

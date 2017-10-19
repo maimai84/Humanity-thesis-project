@@ -1,45 +1,33 @@
-import express from 'express';
+var express = require('express');
 const app = express();
 
-import morgan from 'morgan'; //display req in terminal ..
+var morgan = require('morgan'); //display req in terminal ..
 app.use(morgan('dev'));
 
 //APIs request , if needed
-import request from 'request'; 
+var request = require('request'); 
 
 //read req body data 
-import bodyParser from 'body-parser';  
+var bodyParser = require('body-parser');  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 //passwords in/de-crypting ..
-//import bcrypt from 'bcrypt'; 
+//import bcrypt = require('bcrypt'; 
 
 //for log-in/out sessions
-import session from 'express-session'; 
+var session = require('express-session'); 
 app.use(session({
     secret: "ptb",
-    resave: false,
+    resave: true,
     saveUninitialized: true
 }));
 
 //for sessions
-import cookieParser from 'cookie-parser'; 
+var cookieParser = require('cookie-parser'); 
 app.use(cookieParser());
-
-//users router for now ...
-import usersRouter from './usersRoute.js';
-app.use('/users', usersRouter);
-
-//orgs router for now ...
-import orgsRouter from './orgsRoute.js';
-app.use('/orgs', orgsRouter);
-
-//events router for now ...
-import eventsRouter from './eventsRoute.js';
-app.use('/events', eventsRouter);
 
 // Add headers
 app.use(function (req, res, next) {
@@ -61,8 +49,91 @@ app.use(function (req, res, next) {
    next();
 });
 
+app.get('/', (req, res) => {
+  res.send('i have nothing to the main page ammar !!!');
+})
 
-var port = process.env.PORT || 3333
+//users router for now ...
+var usersRouter = require('./usersRoute.js');
+app.get('/users', (req, res) => {
+  usersRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.get('/users/signout', (req, res) => {
+  usersRouter['get']['/signout'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/users/signin', (req, res) => {
+  usersRouter['post']['/signin'](req, res, (data) => {
+    //create the session here ....
+    console.log(data)
+    if (data) {
+      req.session.username = req.body.name;
+      req.session.password = req.body.password;
+      console.log('session : ', req.session);
+      res.send('"signed in"');
+    } else {
+      res.send('"not signed in"');
+    }
+  });
+});
+app.post('/users/signup', (req, res) => {
+  console.log('inside server .. redirecting to ordered route ..');
+  usersRouter['post']['/signup'](req, res, (data) => {
+    res.send(data);
+  });
+});
+
+//orgs router for now ...
+var orgsRouter = require('./orgsRoute.js');
+app.get('/orgs/', (req, res) => {
+  orgsRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.get('/orgs/signout', (req, res) => {
+  orgsRouter['get']['/signout'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/orgs/signin', (req, res) => {
+  orgsRouter['post']['/signin'](req, res, (data) => {
+    //create the session here ....
+    if (data) {
+      req.session.username = req.body.name;
+      req.session.password = req.body.password;
+      console.log('session : ', req.session);
+      res.send('"signed in"');
+    } else {
+      res.send('"not signed in"');
+    }
+  });
+});
+app.post('/orgs/signup', (req, res) => {
+  orgsRouter['post']['/signup'](req, res, (data) => {
+    res.send(data);
+  });
+});
+
+//events router for now ...
+var eventsRouter = require('./eventsRoute.js');
+app.get('/events/', (req, res) => {
+  eventsRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/events/create', (req, res) => {
+  eventsRouter['post']['/create'](req, res, (data) => {
+    res.send(data);
+  });
+});
+
+
+
+
+var port = process.env.PORT || 3336
 var listener = app.listen(port , () => {
 	const { address, port } = listener.address();
 	console.log(`listining on http://${address}:${port}`);

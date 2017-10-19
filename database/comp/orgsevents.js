@@ -1,32 +1,18 @@
 var Sequelize = require('sequelize');
 var sequelize = require('./../main.js');
 
-var schema = sequelize.define('Events', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull:false,
-    uniqe:true
-  },
-  description: {
+var schema = sequelize.define('OrgsEvents', {
+  event_id: {
     type: Sequelize.STRING
   },
-  location:{
+  user_id:{
   	type:Sequelize.STRING
   },
   org_id:{
   	type:Sequelize.STRING
   }
 });
-// schema.build({
-//   name : 'test event !!',
-// })
-//   .save()
-//   .then(() => {
-//     console.log(`saved`);
-//   })
-//   .catch((err) => {
-//     console.log(`not saved saved ${err}`);
-//   })
+
 // schema.sync({ alter: true })
 //   .then((data) => {
 //     console.log('Events table created successfuly');
