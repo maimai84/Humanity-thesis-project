@@ -19,13 +19,13 @@ var schema = sequelize.define('Users', {
   }
 });
 
-schema.sync({ alter: true })
-  .then((data) => {
-    console.log('users table created successfuly');
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+// schema.sync({ alter: true })
+//   .then((data) => {
+//     console.log('users table created successfuly');
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
 
 // schema.build({
 //   name : 'ashar is here !!',

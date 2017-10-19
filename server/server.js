@@ -49,44 +49,88 @@ app.use(function (req, res, next) {
    next();
 });
 
+app.get('/', (req, res) => {
+  res.send('i have nothing to the main page ammar !!!');
+})
+
 //users router for now ...
 var usersRouter = require('./usersRoute.js');
-app.get('/users/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(6);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  usersRouter['get'][subEndPoint](req, res);
+app.get('/users', (req, res) => {
+  usersRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.get('/users/signout', (req, res) => {
+  usersRouter['get']['/signout'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/users/signin', (req, res) => {
+  usersRouter['post']['/signin'](req, res, (data) => {
+    //create the session here ....
+    console.log(data)
+    if (data) {
+      req.session.username = req.body.name;
+      req.session.password = req.body.password;
+      console.log('session : ', req.session);
+      res.send('"signed in"');
+    } else {
+      res.send('"not signed in"');
+    }
+  });
 });
-app.post('/users/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(6);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  usersRouter['post'][subEndPoint](req, res);
+app.post('/users/signup', (req, res) => {
+  console.log('inside server .. redirecting to ordered route ..');
+  usersRouter['post']['/signup'](req, res, (data) => {
+    res.send(data);
+  });
 });
 
 //orgs router for now ...
 var orgsRouter = require('./orgsRoute.js');
-app.get('/orgs/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(5);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  eventsRouter['get'][subEndPoint](req, res);
+app.get('/orgs/', (req, res) => {
+  orgsRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.get('/orgs/signout', (req, res) => {
+  orgsRouter['get']['/signout'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/orgs/signin', (req, res) => {
+  orgsRouter['post']['/signin'](req, res, (data) => {
+    //create the session here ....
+    if (data) {
+      req.session.username = req.body.name;
+      req.session.password = req.body.password;
+      console.log('session : ', req.session);
+      res.send('"signed in"');
+    } else {
+      res.send('"not signed in"');
+    }
+  });
 });
-app.post('/orgs/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(5);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  eventsRouter['post'][subEndPoint](req, res);
+app.post('/orgs/signup', (req, res) => {
+  orgsRouter['post']['/signup'](req, res, (data) => {
+    res.send(data);
+  });
 });
 
 //events router for now ...
 var eventsRouter = require('./eventsRoute.js');
-app.get('/events/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(7);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  eventsRouter['get'][subEndPoint](req, res);
+app.get('/events/', (req, res) => {
+  eventsRouter['get']['/'](req, res, (data) => {
+    res.send(data);
+  });
+})
+app.post('/events/create', (req, res) => {
+  eventsRouter['post']['/create'](req, res, (data) => {
+    res.send(data);
+  });
 });
-app.post('/events/*', (req, res) => {
-  var subEndPoint = req.originalUrl.substring(7);
-  console.log('inside server .. redirecting to ordered route ..' , subEndPoint);
-  eventsRouter['post'][subEndPoint](req, res);
-});
+
+
 
 
 var port = process.env.PORT || 3336

@@ -1,33 +1,27 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View,Button, Alert} from 'react-native';
+import { StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: '',password:''};
+    this.state = {username:'',password:''};this.submitSignIn =()=>{
+      
+        let info = this.state;
+        fetch('http:192.168.8.140:3336/users/signin',{'method':'POST',
+          headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          },
+          body:JSON.stringify({username:this.state.username,password:this.state.password})})
+          .then((reponse)=> (console.log('data : ',reponse._bodyInit)))
+      }
   }
-  submitSignIn =()=>{
-    let info = this.state;
-    fetch('/users/',{'method':'POST',body:JSON.stringify(info)})
-      .then((reponse)=> (reponse.json()))
-      .then((responseData) => {
-        Alert.alert(
-          'You have signed in',
-          'Welcome to your profile',responseData.username,
-          [
-            {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          { cancelable: false }
-        )
-      })
-  }
+  
 
   render() {
     return (
      <View style={styles.container}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10,fontSize:30}}> Sign In </Text>
-     <Text>Username:</Text>
+     <Text>Username Ammar:</Text>
       <TextInput
           style={{height: 50, width: 200 ,alignItems: 'center'}}
           returnKeyType='next'
@@ -44,7 +38,9 @@ export default class Login extends React.Component {
           onChangeText={(password) => this.setState({password})}
           value={this.state.password}
         />
-        <Button title="Sign-in" style={styles.loginSubmitButt} onPress={this.submitSignIn}/>
+        <TouchableOpacity style={styles.loginSubmitButt} onPress={this.submitSignIn.bind(this)}>
+        <Text>submitSignIn</Text>
+        </TouchableOpacity>
       </View>
     
     );
@@ -58,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loginSubmitButt:{
-    backgroundColor:'white',
+    backgroundColor:'green',
     paddingVertical:15,
   }
 });

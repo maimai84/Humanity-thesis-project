@@ -17,13 +17,22 @@ var schema = sequelize.define('Events', {
   	type:Sequelize.STRING
   }
 });
-
-schema.sync({ alter: true })
-  .then((data) => {
-    console.log('Events table created successfuly');
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+// schema.build({
+//   name : 'test event !!',
+// })
+//   .save()
+//   .then(() => {
+//     console.log(`saved`);
+//   })
+//   .catch((err) => {
+//     console.log(`not saved saved ${err}`);
+//   })
+// schema.sync({ alter: true })
+//   .then((data) => {
+//     console.log('Events table created successfuly');
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
 
 module.exports = schema;
