@@ -52,11 +52,11 @@ module.exports = {
             res.status(202);
             return cb(true);
           }
-          res.status(400);
+          res.status(400); //400 : bad request
           cb(false);
         })
         .catch((err , user) => {
-          res.status(500);
+          res.status(500); //500 : internal server error
           cb(false);          
         })
     },

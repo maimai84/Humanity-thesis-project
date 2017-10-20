@@ -14,8 +14,9 @@ module.exports = {
       }
   },
   post : {
-    '/create' : (req, res) => {
+    '/create' : (req, res, cb) => {
       var event = req.body;
+      event.org_id = req.session.username;
       console.log('info of event to create : ', event);
       Events.build(event)
         .save()
@@ -27,6 +28,7 @@ module.exports = {
         .catch((err) => {
           var m = `error saving event : ${event} - sign up coz : ${err.message}`;
           console.log(m);
+          //edit the events table to accept name of org instead of id ..
           cb(false , m);
         })
     }

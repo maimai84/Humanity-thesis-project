@@ -47,16 +47,16 @@ module.exports = {
       console.log('info to orgs/signin :  ', info);
       Orgs.find({where : {name : info.name , password : info.password}})
         .then((org) => {
-          if (org.username) {
+          if (org.name) {
             console.log('signing in for : ', org.get('name'));
             res.status(202);
             return cb(true)
           }
-          res.status(400);
+          res.status(400); //400 : bad request
           cb(false);
         })
         .catch((err) => {
-          res.status(500);
+          res.status(500); //500 : internal server error
           cb(false);          
         })
     },

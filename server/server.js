@@ -100,8 +100,9 @@ app.post('/users/signin', (req, res) => {
     if (done) {
       req.session.username = req.body.username;
       req.session.password = req.body.password;
+      req.session.type = "user";
       console.log('session : ', req.session);
-      res.send({"done" : true});
+      res.send({"done" : true , "type" : "user"});
     } else {
       res.send({"done" : false});
     }
@@ -161,10 +162,11 @@ app.post('/orgs/signin', (req, res) => {
     if (data) {
       req.session.username = req.body.name;
       req.session.password = req.body.password;
+      req.session.type = "org";
       console.log('session : ', req.session);
-      res.send('"signed in"');
+      res.send({"done" : true , "type" : "org"});
     } else {
-      res.send('"not signed in"');
+      res.send({"done" : false});
     }
   });
 });
@@ -192,6 +194,11 @@ app.get('/events/', (req, res) => {
   });
 })
 app.post('/events/create', (req, res) => {
+  if (req.session.type !== "org") {
+    res.status(401); //401 : un authrized ...
+    console.log('un authrized user to create event .....');
+    return res.send({message : "sign in as organisation first !!"})
+  }
   eventsRouter['post']['/create'](req, res, (done, message) => {
     res.status(done ? 201 : 400);
     res.send({message : message});
