@@ -6,8 +6,21 @@ import allStyle from './style.js';
 const styles = StyleSheet.create(allStyle.optsList);
 
 export default class OptsList extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.getEvents = () => {
+      fetch('http:192.168.8.140:3336/events', 
+        {
+          'method':'GET', 
+          'headers': { 'Accept': 'application/json', 'Content-Type': 'application/json'
+        }
+      })
+      .then((reponse)=> {
+        whatToView({events : reponse._bodyInit});
+        console.log('data : ',reponse._bodyInit);
+      });
+    }
+
     this.getProfile = () => {
       let info = this.state;
       fetch('http:192.168.8.140:3336/users/userinfo', 
@@ -16,16 +29,22 @@ export default class OptsList extends React.Component {
           'headers': { 'Accept': 'application/json', 'Content-Type': 'application/json'
         }
       })
-      .then((reponse)=> (console.log('data : ',reponse._bodyInit)));
-      
+      .then((reponse)=> {
+        whatToView({profile : reponse._bodyInit});
+        console.log('data : ',reponse._bodyInit);
+      });
     }
+
     this.logMeOut () {
       fetch('http:192.168.8.140:3336/users/signout', 
         {
           'method':'GET', 
         }
       })
-      .then((reponse)=> (console.log('data : ',reponse._bodyInit)));
+      .then((reponse)=> {
+        whatToView("signed out");
+        console.log('logged out ? ',reponse._bodyInit);
+      });
       
     }
   }
@@ -35,6 +54,9 @@ export default class OptsList extends React.Component {
       { 
         <TouchableOpacity style={styles.optionsContainer} onPress={this.getProfile.bind(this)}>
           <Text style={styles.options}> profile </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionsContainer} onPress={this.getEvents.bind(this)}>
+          <Text style={styles.options}> events list</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionsContainer} onPress={this.logMeOut.bind(this)}>
           <Text style={styles.options}> logout </Text>
