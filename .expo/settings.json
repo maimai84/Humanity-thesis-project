@@ -1,6 +1,6 @@
 {
   "urlRandomness": "5g-fe4",
-  "hostType": "tunnel",
+  "hostType": "localhost",
   "lanType": "ip",
   "dev": true,
   "strict": false,

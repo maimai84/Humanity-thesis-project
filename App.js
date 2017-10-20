@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, AppRegistry, Image, KeyboardAvoidingView} from 'react-native';
 import List from './client/eventstodo';
 import Login from './client/login';
+import navbar from './client/navbar';
 
 export default class App extends React.Component {
   constructor() {
@@ -16,13 +17,7 @@ export default class App extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
-        <Text>ammar</Text>
-        <Text></Text>
-        <Image source={require('./images/32799248.png')}/>
-        <Login />
-        <Text>Fill your infromations and press sign in</Text>
-        <Text>to see your profile or the events.</Text>
-        <List/>
+        <text> hi osamah </text>
       </KeyboardAvoidingView>
     );
   }
