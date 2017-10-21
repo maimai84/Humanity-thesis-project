@@ -49,7 +49,7 @@ export default class Navbar extends React.Component {
         <TouchableOpacity style={styles.optionsContainer} onPress={this.toggleOptions.bind(this)}>
           <Text style={styles.options}> options </Text>
         </TouchableOpacity>
-        {this.state.opts && <OptsList whatToView={this.whatToView.bind(this)} type={this.state.type}/>}
+        {this.state.opts && <OptsList whatToView={this.whatToView.bind(this)}/>}
         {this.currentView()}
       </View>
     );

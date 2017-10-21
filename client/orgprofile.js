@@ -4,7 +4,7 @@ import allStyle from './style.js';
 
 const styles = StyleSheet.create(allStyle.userprofile);
 
-export default class Userprofile extends React.Component {
+export default class Orgprofile extends React.Component {
   constructor(props) {
       super(props);
     }
@@ -12,7 +12,7 @@ export default class Userprofile extends React.Component {
       return (
         <View style={styles.container}>
           <Text>
-            this is user profile
+            this is org profile
           </Text>
         </View>
       );
