@@ -30,9 +30,9 @@ export default class Navbar extends React.Component {
         return <signin />
       } else if (toShow.profile) {
         if (this.State.type === "user"){
-          return <Userprofile profileData={{toShow.profile}} />
+          return <Userprofile profileData={toShow.profile} />
         }
-        return <Orgprofile profileData={{toShow.profile}} />
+        return <Orgprofile profileData={toShow.profile} />
       }
       return <Eventslist />
     }
