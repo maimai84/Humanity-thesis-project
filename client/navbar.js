@@ -3,10 +3,9 @@ import { StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 
 import allStyle from './style.js';
 import OptsList from './optslist.js';
-import signin from './login.js';
-import Userprofile from './Userprofile.js';
-import Orgprofile from './Orgprofile.js';
-import Eventslist from './eventstodo.js.js';
+import Userprofile from './userprofile.js';
+import Orgprofile from './orgprofile.js';
+import Eventslist from './eventstodo.js';
 
 const styles = StyleSheet.create(allStyle.navbar);
 
@@ -15,7 +14,7 @@ export default class Navbar extends React.Component {
     super(props);
     this.state = {
       opts : false,
-      type : props.type
+      type :  'user' // props.type
     };
     this.toggleOptions = () => {
       this.setState(previousState => {
@@ -24,15 +23,17 @@ export default class Navbar extends React.Component {
     }
     this.currentView = (toShow) => {
       if (toShow === undefined) { 
-        return <OptsList whatToView={this.whatToView.bind(this)} />
+        //return <OptsList whatToView={this.whatToView.bind(this)} />
+        return <Text> click to show options </Text>;
       } else if (toShow === "signed out") {
         //do something to tell app.js to hide this navbar and show only the sign in view 
-        return <signin />
-      } else if (toShow.profile) {
+        //return props.signedout();
+        return <Text> signed out </Text>;
+      } else if (toShow['profile']) {
         if (this.State.type === "user"){
-          return <Userprofile profileData={{toShow.profile}} />
+          return <Userprofile profileData={toShow['profile']} />
         }
-        return <Orgprofile profileData={{toShow.profile}} />
+        return <Orgprofile profileData={toShow['profile']} />
       }
       return <Eventslist />
     }
@@ -54,4 +55,3 @@ export default class Navbar extends React.Component {
     );
   }
 }
-
