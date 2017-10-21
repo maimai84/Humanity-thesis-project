@@ -5,7 +5,7 @@ var schema = sequelize.define('Orgs', {
   name: {
     type: Sequelize.STRING,
     allowNull:false,
-    uniqe:true
+    unique:true
   },
   description: {
     type: Sequelize.STRING
@@ -24,12 +24,12 @@ var schema = sequelize.define('Orgs', {
 });
 
 
-schema.sync({ alter: true })
-  .then((data) => {
-    console.log('Orgs table created successfuly');
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+// schema.sync({ alter: true })
+//   .then((data) => {
+//     console.log('Orgs table created successfuly');
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
 
 module.exports = schema;
