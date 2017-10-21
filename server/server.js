@@ -186,9 +186,10 @@ events router from here
 **************************************************/
 
 var eventsRouter = require('./eventsRoute.js');
-app.get('/events/', (req, res) => {
+app.get('/events', (req, res) => {
   eventsRouter['get']['/'](req, res, (done, events) => {
-    res.status(done ? ((users.length) ? 302 : 404 ) : 500);
+    res.status(done ? ((events.length) ? 302 : 404 ) : 500);
+    if (done) console.log('found : ' + events.length + ' events !!!!');
     //302 : found , 404 : not found, 500 : intrnal server error
     res.send(events);
   });

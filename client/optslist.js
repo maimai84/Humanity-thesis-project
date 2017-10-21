@@ -16,42 +16,35 @@ export default class OptsList extends React.Component {
         }
       })
       .then((reponse)=> {
-        whatToView({events : reponse._bodyInit});
+        props.whatToView({events : reponse._bodyInit});
         console.log('data : ',reponse._bodyInit);
       });
     }
 
     this.getProfile = () => {
-      let info = this.state;
-      fetch('http:192.168.8.140:3336/users/userinfo', 
+      fetch('http:192.168.8.140:3336/' + props.type + 's/' + props.type + 'info', 
         {
           'method':'GET', 
           'headers': { 'Accept': 'application/json', 'Content-Type': 'application/json'
         }
       })
       .then((reponse)=> {
-        whatToView({profile : reponse._bodyInit});
+        props.whatToView({profile : reponse._bodyInit});
         console.log('data : ',reponse._bodyInit);
       });
     }
 
-    this.logMeOut () {
-      fetch('http:192.168.8.140:3336/users/signout', 
-        {
-          'method':'GET', 
-        }
-      })
-      .then((reponse)=> {
-        whatToView("signed out");
-        console.log('logged out ? ',reponse._bodyInit);
-      });
-      
+    this.logMeOut = () => {
+      fetch('http:192.168.8.140:3336/users/signout', {'method':'GET'})
+        .then((reponse)=> {
+          props.whatToView("signed out");
+          console.log('logged out ? ',reponse._bodyInit);
+        });
     }
   }
   render() {
     return (
       <View style={styles.container}>
-      { 
         <TouchableOpacity style={styles.optionsContainer} onPress={this.getProfile.bind(this)}>
           <Text style={styles.options}> profile </Text>
         </TouchableOpacity>
@@ -61,7 +54,6 @@ export default class OptsList extends React.Component {
         <TouchableOpacity style={styles.optionsContainer} onPress={this.logMeOut.bind(this)}>
           <Text style={styles.options}> logout </Text>
         </TouchableOpacity>
-      }
       </View>
     );
   }

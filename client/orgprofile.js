@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
+import allStyle from './style.js';
 
 const styles = StyleSheet.create(allStyle.userprofile);
 
-export default class Navbar extends React.Component {
+export default class Orgprofile extends React.Component {
   constructor(props) {
       super(props);
     }
@@ -11,7 +12,7 @@ export default class Navbar extends React.Component {
       return (
         <View style={styles.container}>
           <Text>
-            this is user profile
+            this is org profile
           </Text>
         </View>
       );
