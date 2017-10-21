@@ -23,7 +23,7 @@ onSignUp () {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.parse({
+  body: JSON.stringify({
     username: this.state.username,
     email: this.state.email,
     password:this.state.password
