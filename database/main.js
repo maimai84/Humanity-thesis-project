@@ -1,3 +1,4 @@
+
 var Sequelize = require('sequelize');
 var config = require('../config.js');
 /*
@@ -30,3 +31,4 @@ sequelize.authenticate()
 	    console.log('There is connection in ERROR', err);
 	})
 module.exports = sequelize ;
+

@@ -17,7 +17,6 @@ var schema = sequelize.define('Events', {
   	type:Sequelize.STRING
   }
 });
-
 // schema.sync({ alter: true })
 //   .then((data) => {
 //     console.log('Events table created successfuly');
