@@ -1,14 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
-import UserSignUp from './userSignUp';
-import OrgSignUp from './orgSignUp';
+import LogInUsers from './logInUsers';
+import LogInOrgs from './logInOrgs';
 
 
 
 
 
 
-export default class SignUp extends React.Component {
+export default class SignIn extends React.Component {
   constructor(){
     super();
     this.state = {
@@ -32,14 +32,14 @@ Greeting() {
 
    
     if (this.state.showUser && !this.state.mainComp && !this.state.showOrg) {
-    return <UserSignUp/>
+    return <LogInUsers/>
   }
   else if(!this.state.showComp && this.state.mainComp && !this.state.showOrg){
     return mainComponent;
      
   }
     else if (this.state.showOrg && !this.state.mainComp && !this.state.showUser) {
-    return <OrgSignUp/>;
+    return <LogInOrgs/>;
 
   }
 }

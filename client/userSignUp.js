@@ -6,7 +6,7 @@ import { Text, View, TextInput, KeyboardAvoidingView, Button} from 'react-native
 
 
 
-export default class Comp extends React.Component {
+export default class UserSignUp extends React.Component {
   constructor(){
     super();
     this.state = {
@@ -17,7 +17,7 @@ export default class Comp extends React.Component {
   }
 
 onSignUp () {
-   fetch('http:192.168.8.140:3336/users/signup', {
+   fetch('https://thawing-garden-23809.herokuapp.com/users/signup', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -39,7 +39,6 @@ onSignUp () {
 
 render() {
     return (
-      <KeyboardAvoidingView behavior = 'padding'>
       <View>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> Sign Up </Text>
         
@@ -69,7 +68,6 @@ render() {
         />
         <Button title = "submit" onPress = {this.onSignUp.bind(this)}/>
       </View>
-     </KeyboardAvoidingView>
     );
   }
 }
