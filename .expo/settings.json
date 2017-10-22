@@ -1,6 +1,7 @@
 {
-  "urlRandomness": "h2-jy3",
-  "hostType": "localhost",
+  "urlRandomness": "eg-gfx",
+  "hostType": "tunnel",
+
   "lanType": "ip",
   "dev": true,
   "strict": false,
