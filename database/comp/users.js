@@ -2,10 +2,10 @@ var Sequelize = require('sequelize');
 var sequelize = require('./../main.js');
 
 var schema = sequelize.define('Users', {
-  name: {
+  username: {
     type: Sequelize.STRING,
     allowNull:false,
-    uniqe:true
+    unique:true
   },
   password: {
     type: Sequelize.STRING,
@@ -19,24 +19,16 @@ var schema = sequelize.define('Users', {
   }
 });
 
-schema.sync({ alter: true })
-  .then((data) => {
-    console.log('users table created successfuly');
-  })
-  .catch((err) => {
-    console.log(err)
-  })
 
-// schema.build({
-//   name : 'ashar is here !!',
-//   password : 'ashar is here !!'
-// })
-//   .save()
-//   .then(() => {
-//     console.log(`saved`);
-//   })
-//   .catch((err) => {
-//     console.log(`not saved saved ${err}`);
-//   })
+
+// schema.sync({ alter: true })
+//           .then((data) => {
+//             console.log('users table created successfuly');
+//           })
+//           .catch((err) => {
+//             console.log(err)
+//           })
+
+
 
 module.exports = schema;
