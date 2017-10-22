@@ -1,50 +1,8 @@
 import React from "react";
-import {  View, TouchableOpacity, Text,StyleSheet } from 'react-native'
+import {  View,StyleSheet } from 'react-native'
 
 // import Entryepage from './client/Entryepage';
-import entryevent from './entryevent'
-export default class List extends React.Component {
-   constructor(){
-      super()
-         this.state ={current:false,eventlist:0} ;
-         fetch('http:192.168.8.140:3336/events',{'method':'GET',
-             headers: {
-             'Accept': 'application/json',
-             'Content-Type': 'application/json',
-             },
-          })
-          .then((reponse)=> {
-            console.log('data : ',reponse._bodyInit);
-            this.setState({eventlist:reponse._bodyInit})
-         })
-         // this.eventPage = () => {
-         //    this.setState( prev => {
-         //      return (current : this);
-         //    })
-         // }
-
-         // this.Change=this.Change.bind(this);
-         // this.add=this.add.bind(this)
-   }
-
-   
-   render(){
-      return (
-         <View style={styles.container}> 
-            {
-               // (!this.state.current) 
-               //    ? 
-                  this.state.eventlist.map((event) => (
-                     this.setState({current:event})
-                  )) 
-                  // : null
-                  // <Entryepage event={props.event} />
-            }
-            <entryevent event = {this.state.current}/>
-         </View>
-      )
-   }
-}
+import Entryevent from './Entryevent'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -56,4 +14,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F8F8',
   }
 });
+export default class List extends React.Component {
+  constructor(){
+    super()
+      this.state ={current:false,eventlist:[]} ;
+    
+      fetch('https://thawing-garden-23809.herokuapp.com/events',{'method':'GET',
+         headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+         },
+      }).then((response) => {
+
+      let body = response.json();
+      this.setState({eventlist : body._bodyInit});
+      });
+
+            
+  }
+
+   
+  render(){
+    return (
+       <View style={styles.container}> 
+          {
+               this.state.eventlist.map((event) => (<Entryevent event = {event.id} /> ))
+          } 
+       </View>
+    )
+  }
+}
 
