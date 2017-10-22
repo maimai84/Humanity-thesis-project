@@ -8,16 +8,15 @@ export default class Entryevent extends React.Component {
   render() {
     retern(
       <View>
-            <TouchableOpacity
-              key = {props.event.id}
-              >
+            <TouchableOpacity>
+                <Text>{props.event.name}</Text>
+                <Text>{props.event.descreption}</Text>
+                <Text>{props.event.location}</Text>
+                <Text>{props.event.orgs_id}</Text>
              </TouchableOpacity> 
       </View>
     )
   }
 }
-               // <Text>{props.event.name}</Text>
-               // <Text>{props.event.descreption}</Text>
-               // <Text>{props.event.location}</Text>
-               // <Text>{props.event.orgs_id}</Text>
+                
   

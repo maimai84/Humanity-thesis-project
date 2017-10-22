@@ -2,7 +2,7 @@ import React from "react";
 import {  View,StyleSheet } from 'react-native'
 
 // import Entryepage from './client/Entryepage';
-import Entryevent from './Entryevent'
+import Entryevent from './entryevent'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,6 +21,8 @@ export default class List extends React.Component {
     
       fetch('https://thawing-garden-23809.herokuapp.com/events',{'method':'GET',
          headers: {
+
+          
          'Accept': 'application/json',
          'Content-Type': 'application/json',
          },

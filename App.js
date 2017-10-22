@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import SignUp from './client/signUp';
 import SignIn from './client/signIn';
-import List from './client/eventstodo';
 // import navbar from './client/navbar';
 
 export default class App extends React.Component {
