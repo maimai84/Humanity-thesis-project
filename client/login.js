@@ -1,5 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'gray',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loginSubmitButt:{
+    backgroundColor:'green',
+    paddingVertical:15,
+  }
+});
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -46,15 +58,3 @@ export default class Login extends React.Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loginSubmitButt:{
-    backgroundColor:'green',
-    paddingVertical:15,
-  }
-});
