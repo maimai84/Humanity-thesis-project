@@ -5,7 +5,7 @@ var schema = sequelize.define('Events', {
   name: {
     type: Sequelize.STRING,
     allowNull:false,
-    uniqe:true
+    unique:true
   },
   description: {
     type: Sequelize.STRING
@@ -17,16 +17,6 @@ var schema = sequelize.define('Events', {
   	type:Sequelize.STRING
   }
 });
-// schema.build({
-//   name : 'test event !!',
-// })
-//   .save()
-//   .then(() => {
-//     console.log(`saved`);
-//   })
-//   .catch((err) => {
-//     console.log(`not saved saved ${err}`);
-//   })
 // schema.sync({ alter: true })
 //   .then((data) => {
 //     console.log('Events table created successfuly');

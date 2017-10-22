@@ -5,7 +5,7 @@ var schema = sequelize.define('Orgs', {
   name: {
     type: Sequelize.STRING,
     allowNull:false,
-    uniqe:true
+    unique:true
   },
   description: {
     type: Sequelize.STRING
