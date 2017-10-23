@@ -2,7 +2,7 @@ import React from "react";
 import {  View, StyleSheet, Text ,TouchableOpacity} from 'react-native'
 
 // import Entryepage from './client/Entryepage';
-import Entryevent from './Entryevent'
+import Entryevent from './entryevent'
 
 const styles = StyleSheet.create({
   container: {
