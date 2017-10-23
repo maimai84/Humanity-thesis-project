@@ -1,7 +1,6 @@
 {
-  "urlRandomness": "kj-whd",
-  "hostType": "tunnel",
-
+  "urlRandomness": "wf-iww",
+  "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "strict": false,
