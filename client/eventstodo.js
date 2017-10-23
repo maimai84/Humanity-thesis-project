@@ -16,7 +16,7 @@ export default class List extends React.Component {
         },
       })
       this.setState({eventlist : body._bodyInit});
-      return body._bodyInit.eventlist.map((event) => (<Entryevent event = {event} /> ))
+      this.state.eventlist.map((event) => (<Entryevent event = {event} /> ))
     }
 
             
