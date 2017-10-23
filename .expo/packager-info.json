@@ -1,10 +1,8 @@
 {
-
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 921,
-  "expoServerNgrokUrl": "https://xy-eht.htop1.humanity-thesis-project.exp.direct",
-  "packagerNgrokUrl": "https://packager.xy-eht.htop1.humanity-thesis-project.exp.direct",
-  "ngrokPid": 982
-
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

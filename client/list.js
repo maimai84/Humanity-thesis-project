@@ -1,50 +1,52 @@
 import React from "react";
-import {  View, StyleSheet, Text ,TouchableOpacity} from 'react-native'
+import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight} from 'react-native'
 
-// import Entryepage from './client/Entryepage';
+import Entryevent from './entryevent';
 
-import Entryevent from './entryevent'
+
 
 
 export default class List extends React.Component {
   constructor(){
-    super()
-      this.state ={current:false,eventlist:[]};
-
-      async function this.getEvents () {
-      var {body} = await fetch('https://thawing-garden-23809.herokuapp.com/events',{'method':'GET',
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        },
-      })
-      this.setState({eventlist : body._bodyInit});
-      return body._bodyInit.eventlist.map((event) => (<Entryevent event = {event} /> ))
-    }
-
-            
+    super();
+      this.state = {eventlist:[]};
   }
 
-   
-  render(){
-    return (
-       <View style={styles.container}>
 
-       <TouchableOpacity onPress={this.getEvents.bind(this)}>
-       <Text>rrrr</Text>
-       </TouchableOpacity>
-       {this.getEvents()}          
-       </View>
-       }
+getEvents () {
+   fetch('https://thawing-garden-23809.herokuapp.com/events',
+    {method: 'GET'})
+
+  .then((response) => response.json())
+
+   .then((data) => {
+    
+        this.setState({eventlist: data})
+        console.log(this.state.eventlist)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+
+run () {
+
+  if(this.state.eventlist.length)
+    return this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event} /> ))
+
+  return <TouchableHighlight onPress = {this.getEvents.bind(this)}>
+        <Text>HELLO</Text>
+        </TouchableHighlight>
+}
+
+
+
+render() {
+    return(
+      <View>{this.run()}</View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    
-  }
-});
+
 
