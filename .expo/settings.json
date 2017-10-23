@@ -1,9 +1,9 @@
 {
-  "urlRandomness": "8b-nac",
   "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "strict": false,
   "minify": false,
-  "urlType": "exp"
+  "urlType": "exp",
+  "urlRandomness": "xd-6it"
 }
