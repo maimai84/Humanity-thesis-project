@@ -1,6 +1,7 @@
 {
   "urlRandomness": "3n-sed",
   "hostType": "tunnel",
+
   "lanType": "ip",
   "dev": true,
   "strict": false,
