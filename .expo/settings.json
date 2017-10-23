@@ -1,9 +1,9 @@
 {
+  "urlRandomness": "xy-eht",
   "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "strict": false,
   "minify": false,
-  "urlType": "exp",
-  "urlRandomness": "yp-sw8"
+  "urlType": "exp"
 }
