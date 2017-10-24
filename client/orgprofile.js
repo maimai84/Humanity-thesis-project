@@ -11,9 +11,9 @@ export default class Orgprofile extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <Text>
-            this is org profile
-          </Text>
+        <Text>
+          {this.props.info[0].name}
+        </Text>
         </View>
       );
     }
