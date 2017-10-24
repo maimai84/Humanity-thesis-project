@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, AppRegistry, Image, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import SignUp from './client/signUp';
 import SignIn from './client/signIn';
-import List from './client/list';
+import Userprofile from './client/userprofile';
 // import navbar from './client/navbar';
 
 export default class App extends React.Component {
@@ -60,7 +60,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style = {styles.container}>
-        <List/>
+      <Text>ff</Text>
+        <Userprofile userprofile={{"id":1,"username":"Aseel","password":"1234","email":"ashar@Users.thesis","rate":"4","createdAt":"2017-10-23T10:54:22.000Z","updatedAt":"2017-10-23T10:54:22.000Z"}}/>
       </View>
       
     );
