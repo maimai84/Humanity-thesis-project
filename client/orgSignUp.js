@@ -15,6 +15,7 @@ export default class OrgSignUp extends React.Component {
         };
     }
 
+
     onSignUp () {
         fetch("https://thawing-garden-23809.herokuapp.com/orgs/signup", {
             method: "POST",
@@ -28,7 +29,7 @@ export default class OrgSignUp extends React.Component {
                 description: this.state.description,
                 password:this.state.password
             })
-        }) .then((response) => console.log(response))
+        }) .then((response) => response.json())
             .then((data) => {
                 console.log(data);
             })
@@ -37,9 +38,15 @@ export default class OrgSignUp extends React.Component {
             });
     }
 
+    myFunctions(){
+        this.onSignUp();
+        this.setState({signedUp: true});
+    }
+
     goToLogIn () {
         if(this.state.signedUp)
             return <LogInOrgs/>;
+
 
         else{
             return <View>
@@ -76,17 +83,13 @@ export default class OrgSignUp extends React.Component {
                     secureTextEntry = {true}
                     onChangeText={(password) => this.setState({password})}
                 />
-                <Button title = "submit" onPress = {() => {this.onSignUp.bind(this);
-                    this.setState({signedUp: true});}}/>
+                <Button title = "submit" onPress = {this.myFunctions.bind(this)}/>
             </View>;
+
         }
+
+
     }
-
-
-
-
-
-
     render() {
         return (
             <View>
@@ -94,6 +97,7 @@ export default class OrgSignUp extends React.Component {
             </View>
         );
     }
+
 }
 
 // const styles = StyleSheet.create({

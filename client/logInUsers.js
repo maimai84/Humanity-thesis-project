@@ -1,6 +1,8 @@
+
 import React from "react";
 import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from "react-native";
-import UserProfile from "./userprofile";
+import Navbar from "./navbar";
+
 
 export default class loginInUseres extends React.Component {
 
@@ -49,7 +51,7 @@ export default class loginInUseres extends React.Component {
 
     goToProfile () {
         if(this.state.signedIn)
-            return <UserProfile name = {this.state.userInfo}/>;
+            return <Navbar info = {this.state.userInfo[0]} profile = {"user"}/>;
 
         else{
             return <View>
@@ -73,11 +75,11 @@ export default class loginInUseres extends React.Component {
                 />
                 <Button title = "submit" onPress = {this.myFunctions.bind(this)}/>
             </View>;
+
         }
+
+
     }
-
-
-
 
     render() {
         return (

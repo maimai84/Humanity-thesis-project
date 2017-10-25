@@ -1,9 +1,9 @@
 {
-  "urlRandomness": "tz-fu4",
   "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "strict": false,
   "minify": false,
-  "urlType": "exp"
+  "urlType": "exp",
+  "urlRandomness": "cz-x9n"
 }

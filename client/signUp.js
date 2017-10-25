@@ -4,10 +4,6 @@ import UserSignUp from "./userSignUp";
 import OrgSignUp from "./orgSignUp";
 
 
-
-
-
-
 export default class SignUp extends React.Component {
     constructor(){
         super();
