@@ -11,7 +11,7 @@ export default class Userprofile extends React.Component {
     }
     profile() {
         
-        if(this.props.userprofile) {
+        if(this.props.info) {
             return  (<View>
                 <Text>
                     {this.props.userprofile.username}
