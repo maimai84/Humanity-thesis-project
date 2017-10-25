@@ -15,7 +15,7 @@ export default class App extends React.Component {
       showMain: true,
     };
   }
-  signin =() => {
+  signin = () => {
     this.setState({ showSignUp: false});
     this.setState({ showSignIn: true});
     this.setState({ showMain: false });
@@ -61,9 +61,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style = {styles.container}>
-      <List/>
-        <Text>ff</Text>
-       <Userprofile userprofile={{"id":1,"username":"Aseel","password":"1234","email":"ashar@Users.thesis","rate":"4","createdAt":"2017-10-23T10:54:22.000Z","updatedAt":"2017-10-23T10:54:22.000Z"}}/>
+      {this.main()}
        </View>
       
     );
