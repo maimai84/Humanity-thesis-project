@@ -31,13 +31,18 @@ onSignUp () {
     description: this.state.description,
     password:this.state.password
   })
-}) .then((response) => console.log(response))
+}) .then((response) => response.json())
       .then((data) => {
        console.log(data)
       })
       .catch((error) => {
         console.error(error);
       });
+}
+
+myFunctions(){
+ this.onSignUp();
+ this.setState({signedUp: true});
 }
 
 goToLogIn () {
@@ -79,14 +84,10 @@ goToLogIn () {
           secureTextEntry = {true}
           onChangeText={(password) => this.setState({password})}
         />
-        <Button title = "submit" onPress = {() => {this.onSignUp.bind(this)
-         this.setState({signedUp: true})}}/>
+        <Button title = "submit" onPress = {this.myFunctions.bind(this)}/>
       </View>
     }
 }
-
-
-
 
 
 
