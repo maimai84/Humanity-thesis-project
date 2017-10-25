@@ -4,7 +4,7 @@ import { Text, View} from "react-native";
 // const styles = StyleSheet.create(allStyle.userprofile);
 
 export default class Userprofile extends React.Component {
-<<<<<<< HEAD
+
     constructor(props) {
         super(props);
 
@@ -34,19 +34,7 @@ export default class Userprofile extends React.Component {
                 {this.profile()}
             </View>
         );
-=======
-  constructor(props) {
-      super(props)
-  }
-    render() {
-      return (
-        <View style={styles.container}>
-          <Text>
-            {this.props.name[0].username}
-          </Text>
-        </View>
-      );
->>>>>>> b3acf07e8eb58e7b1c154fd549aa869629f0cd4a
+
     }
 }
 

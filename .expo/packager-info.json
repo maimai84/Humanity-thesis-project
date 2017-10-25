@@ -1,16 +1,10 @@
 {
   "expoServerPort": 19000,
-<<<<<<< HEAD
+
   "packagerPort": 19003,
   "packagerPid": 16537,
   "expoServerNgrokUrl": "https://tz-fu4.maimai84.humanity-thesis-project.exp.direct",
   "packagerNgrokUrl": "https://packager.tz-fu4.maimai84.humanity-thesis-project.exp.direct",
   "ngrokPid": 16550
-=======
-  "packagerPort": 19002,
-  "packagerPid": 5628,
-  "expoServerNgrokUrl": "https://rc-ank.htop1.humanity-thesis-project.exp.direct",
-  "packagerNgrokUrl": "https://packager.rc-ank.htop1.humanity-thesis-project.exp.direct",
-  "ngrokPid": 5648
->>>>>>> b3acf07e8eb58e7b1c154fd549aa869629f0cd4a
+
 }
