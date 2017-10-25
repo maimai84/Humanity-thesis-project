@@ -62,8 +62,8 @@ export default class App extends React.Component {
     return (
       <View style = {styles.container}>
       <List/>
-       <Text>ff</Text>
-      <Userprofile userprofile={{"id":1,"username":"Aseel","password":"1234","email":"ashar@Users.thesis","rate":"4","createdAt":"2017-10-23T10:54:22.000Z","updatedAt":"2017-10-23T10:54:22.000Z"}}/>
+        <Text>ff</Text>
+       <Userprofile userprofile={{"id":1,"username":"Aseel","password":"1234","email":"ashar@Users.thesis","rate":"4","createdAt":"2017-10-23T10:54:22.000Z","updatedAt":"2017-10-23T10:54:22.000Z"}}/>
        </View>
       
     );

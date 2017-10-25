@@ -5,5 +5,7 @@
   "dev": true,
   "strict": false,
   "minify": false,
+
   "urlType": "exp"
+
 }
