@@ -32,7 +32,7 @@ getEvents () {
 run () {
 
   if(this.state.eventlist.length)
-    return this.state.eventlist.map((event, index) => (<Entryevent  key = {index} event = {event} /> ))
+    return this.state.eventlist.map((event, index) => (<Entryevent  key = {event.id} event = {event} /> ))
 
   return <TouchableHighlight onPress = {this.getEvents.bind(this)}>
         <Text>HELLO</Text>

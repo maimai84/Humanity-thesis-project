@@ -20,23 +20,26 @@ export default class Entryevent extends React.Component {
     }
 }
 const styles = StyleSheet.create(
-    {
-        container: { 
-            fontSize: 14,
-            lineHeight: 24,
-            color: "black"
-        },
-        container1: {  
-            fontSize: 14,
-            lineHeight: 24,
-            color: "blue"
-        },
-        cont: {
-            backgroundColor:"#99ceff",
-            width:350,
-            marginLeft:0,
-            marginRight:0  
-        }
+  {
+    container: {
+    
+        fontSize: 14,
+        lineHeight: 24,
+        color: "black"
+    },
+    container1: {  
+        fontSize: 14,
+        lineHeight: 24,
+        color: "blue"
+    },
+    cont: {
+        backgroundColor:"#99ceff",
+        width:350,
+        marginLeft:0,
+        marginRight:0
+     
+        //    justifyContent: 'space-between'
     }
+  }
 );
 
