@@ -7,31 +7,33 @@ export default class Userprofile extends React.Component {
 
     constructor(props) {
         super(props);
+    }
 
-    }
-    profile() {
+    // profile() {
         
-        if(this.props.info) {
-            return  (<View>
-                <Text>
-                    {this.props.userprofile.username}
-                </Text>
-                <Text>
-                    {this.props.userprofile.email}
-                </Text>
-                <Text> 
-                    {this.props.userprofile.rate}
-                </Text>
-            </View>);
-        }
-        return <Text>not signed in or no props passeed</Text>;
-    }
+    //     if(this.props.info) {
+    //         return  (<View>
+    //             <Text>
+    //                 {this.props.userprofile.username}
+    //             </Text>
+    //             <Text>
+    //                 {this.props.userprofile.email}
+    //             </Text>
+    //             <Text> 
+    //                 {this.props.userprofile.rate}
+    //             </Text>
+    //         </View>);
+    //     }
+    //     return <Text>not signed in or no props passeed</Text>;
+    // }
 
 
     render() {
         return (
-            <View>
-                {this.profile()}
+            <View >
+                <Text>
+                    {this.props.info.username}
+                </Text>
             </View>
         );
 

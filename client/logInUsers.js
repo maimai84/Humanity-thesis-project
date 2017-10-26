@@ -1,7 +1,7 @@
 
 import React from "react";
 import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from "react-native";
-import Navbar from "./navbar";
+import UserProfile from "./userprofile";
 
 
 export default class loginInUseres extends React.Component {
@@ -51,7 +51,7 @@ export default class loginInUseres extends React.Component {
 
     goToProfile () {
         if(this.state.signedIn)
-            return <Navbar info = {this.state.userInfo[0]} profile = {"user"}/>;
+            return <UserProfile info = {this.state.userInfo[0]} profile = {"user"}/>;
 
         else{
             return <View>

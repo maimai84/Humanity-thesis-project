@@ -3,9 +3,6 @@ import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight} from "re
 
 import Entryevent from "./entryevent";
 
-
-
-
 export default class List extends React.Component {
     constructor(){
         super();

@@ -13,7 +13,7 @@ export default class Orgprofile extends React.Component {
         return (
             <View style={styles.container}>
                 <Text>
-                    {this.props.info[0].name}
+                    {this.props.info.name}
                 </Text>
             </View>
         );

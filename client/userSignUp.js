@@ -88,4 +88,13 @@ export default class UserSignUp extends React.Component {
         );
     }
 }
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#ccd9ff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+
+//   },
+// });
 
