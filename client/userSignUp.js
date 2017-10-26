@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TextInput, KeyboardAvoidingView, Button} from "react-native";
+import { Text, View, TextInput, KeyboardAvoidingView,StyleSheet, Button} from "react-native";
 import LogInUsers from "./logInUsers";
                 
 
@@ -88,13 +88,13 @@ export default class UserSignUp extends React.Component {
         );
     }
 }
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#ccd9ff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ccd9ff',
+    alignItems: 'center',
+    justifyContent: 'center',
 
-//   },
-// });
+  },
+});
 
