@@ -39,7 +39,7 @@ export default class App extends React.Component {
 	        <Text > Or if you want to JOIN US WELCOM from here</Text>
 	        <TouchableOpacity onPress={this.signup.bind(this)}>
 	          <Text>Sign up</Text>
-	        </TouchableOpacity>
+	        </TouchableOpacity> 
         </View> 
 
    

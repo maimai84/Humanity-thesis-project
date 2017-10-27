@@ -12,21 +12,27 @@ export default class Orgprofile extends React.Component {
       "orgDetails" : -1
     };
     console.log(this.state);
-    fetch('https://thawing-garden-23809.herokuapp.com/orgs/orgbyid',{
+    fetch('https://thawing-garden-23809.herokuapp.com/orgs/orgbyid', {
       method: 'POST',
-      body:{"org_id": this.state.org_id}
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({"org_id": props.org_id})
     })
-      .then((res) => {
-        console.log(res)
+      .then((res) => (res.json()))
+      .then((body) => {
+        console.log(body)
         // body = JSON.parse(res._bodyInit);
         // console.log(body);
-        if (!!body._bodyText)
+        if (!!body)
           this.setState({
             orgDetails: body.org
           });
       })
-      .catch((error) => {
-        console.error(error);
+      .catch((error , res) => {
+        console.log(error.message);
+        console.log(res);
       });
   }
   render() {
