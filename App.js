@@ -25,13 +25,12 @@ export default class App extends React.Component {
     this.setState({ showSMain: false });
   }
 
-  main() {
- 
+  main() { 
     const mainComponent =  
         <View>
 	        <Image source={require('./images/32799248.png')}/>
 
-	        <Text >Wlcom to our applecation ['Humanity'] If you are from our family</Text>
+	        <Text >Wlcom to our applecation ['Humanity'] If you are from our family </Text>
 	        <Text > and you want to signIn WELCOM from here press on signIn</Text>
 
 	        <TouchableOpacity onPress={this.signin.bind(this)}>
@@ -41,7 +40,7 @@ export default class App extends React.Component {
 	        <TouchableOpacity onPress={this.signup.bind(this)}>
 	          <Text>Sign up</Text>
 	        </TouchableOpacity>
-        </View>
+        </View> 
 
    
     if (this.state.showSignIn && !this.state.mainComp && !this.state.showSignUp) {
@@ -51,7 +50,8 @@ export default class App extends React.Component {
 		return mainComponent; 
 	}
 	else if (this.state.showSignUp && !this.state.mainComp && !this.state.showSignIn) {
-		return <SignUp/>;
+	return <SignUp/>;
+
 	}
 }
 
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
 AppRegistry.registerComponent('App', () => App);

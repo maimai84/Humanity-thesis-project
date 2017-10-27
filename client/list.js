@@ -11,7 +11,7 @@ export default class List extends React.Component {
     this.state = {
       eventlist : [],
       eventPage : -1,
-      OrgProfile:-1
+      OrgID:-1
     };
   }
   
@@ -21,7 +21,7 @@ export default class List extends React.Component {
     this.setState({
       eventlist:[],
       eventPage:ev,
-      OrgProfile:-1
+      OrgID:-1
     })
     this.run();
   }
@@ -31,7 +31,7 @@ export default class List extends React.Component {
     this.setState({
       eventlist:[],
       eventPage:-1,
-      OrgProfile: org_id
+      OrgID: org_id + ""
     })
     this.run();
   }
@@ -54,7 +54,7 @@ export default class List extends React.Component {
     this.setState({
       eventlist:[],
       eventPage:-1,
-      OrgProfile:-1
+      OrgID:-1
     });
     this.run();
   }
@@ -62,8 +62,8 @@ export default class List extends React.Component {
 
 
   run () {
-    if (this.state.OrgProfile !== -1) {
-      return <OrgProfile org = {this.state.OrgProfile} > org profile : {this.state.OrgProfile} </OrgProfile>
+    if (this.state.OrgID !== -1) {
+      return <OrgProfile org_id = {this.state.OrgID} > org profile : {this.state.OrgID} </OrgProfile>
     }
     if (this.state.eventPage !== -1) {
       return <EventPage callBack = {this.callBack.bind(this)} callOrgProfile = {this.OrgProfile.bind(this)} event = {this.state.eventPage} />
