@@ -27,40 +27,38 @@ export default class App extends React.Component {
 
   main() {
  
-  const mainComponent =  
+    const mainComponent =  
         <View>
-        <Image source={require('./images/32799248.png')}/>
+	        <Image source={require('./images/32799248.png')}/>
 
-        <Text >Wlcom to our applecation ['Humanity'] If you are from our family</Text>
-        <Text > and you want to signIn WELCOM from here press on signIn</Text>
+	        <Text >Wlcom to our applecation ['Humanity'] If you are from our family</Text>
+	        <Text > and you want to signIn WELCOM from here press on signIn</Text>
 
-        <TouchableOpacity onPress={this.signin.bind(this)}>
-          <Text>Login</Text>
-        </TouchableOpacity>
-        <Text > Or if you want to JOIN US WELCOM from here</Text>
-        <TouchableOpacity onPress={this.signup.bind(this)}>
-          <Text>Sign up</Text>
-        </TouchableOpacity>
-      </View>
+	        <TouchableOpacity onPress={this.signin.bind(this)}>
+	          <Text>Login</Text>
+	        </TouchableOpacity>
+	        <Text > Or if you want to JOIN US WELCOM from here</Text>
+	        <TouchableOpacity onPress={this.signup.bind(this)}>
+	          <Text>Sign up</Text>
+	        </TouchableOpacity>
+        </View>
 
    
     if (this.state.showSignIn && !this.state.mainComp && !this.state.showSignUp) {
-    return <SignIn/>
-  }
-  else if(!this.state.showSignIn && this.state.showMain && !this.state.showSignUp){
-    return mainComponent;
-     
-  }
-    else if (this.state.showSignUp && !this.state.mainComp && !this.state.showSignIn) {
-    return <SignUp/>;
-
-  }
+	    return <SignIn/>
+	}
+	else if(!this.state.showSignIn && this.state.showMain && !this.state.showSignUp){
+		return mainComponent; 
+	}
+	else if (this.state.showSignUp && !this.state.mainComp && !this.state.showSignIn) {
+		return <SignUp/>;
+	}
 }
 
   render() {
     return (
       <View style = {styles.container}>
-        <List/>
+        <List>hellow world</List>
       </View>
       
     );
