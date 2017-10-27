@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, TextInput, KeyboardAvoidingView, Button} from 'react-native';
-
+import LogInOrgs from './logInOrgs';
 
 
 
@@ -13,7 +13,8 @@ export default class OrgSignUp extends React.Component {
       name: '' ,
       email: '',
       description: '',
-      password: ''
+      password: '',
+      signedUp: false
     }
   }
 
@@ -30,7 +31,7 @@ onSignUp () {
     description: this.state.description,
     password:this.state.password
   })
-}) .then((response) => console.log(response))
+}) .then((response) => response.json())
       .then((data) => {
        console.log(data)
       })
@@ -39,9 +40,17 @@ onSignUp () {
       });
 }
 
-render() {
-    return (
-      <View>
+myFunctions(){
+ this.onSignUp();
+ this.setState({signedUp: true});
+}
+
+goToLogIn () {
+  if(this.state.signedUp)
+    return <LogInOrgs/>
+
+  else{
+    return <View>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> Sign Up </Text>
         
         <Text>Username:</Text>
@@ -75,7 +84,17 @@ render() {
           secureTextEntry = {true}
           onChangeText={(password) => this.setState({password})}
         />
-        <Button title = "submit" onPress = {this.onSignUp.bind(this)}/>
+        <Button title = "submit" onPress = {this.myFunctions.bind(this)}/>
+      </View>
+    }
+}
+
+
+
+render() {
+    return (
+      <View>
+        {this.goToLogIn()}
       </View>
     );
   }

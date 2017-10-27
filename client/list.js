@@ -59,8 +59,6 @@ export default class List extends React.Component {
     this.run();
   }
 
-
-
   run () {
     if (this.state.OrgID !== -1) {
       return <OrgProfile org_id = {this.state.OrgID} > org profile : {this.state.OrgID} </OrgProfile>
