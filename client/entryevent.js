@@ -1,23 +1,23 @@
 import React from 'react';
+import { Text, View, TouchableOpacity} from 'react-native';
 
-import { Text, View,TouchableOpacity} from 'react-native';
+
 export default class Entryevent extends React.Component {
   constructor(props) {
     super(props);
+    this.callEvPage = () => {
+      props.EvPage(this.props.keys);
+    }
   }
   render() {
-    retern(
+    return(
       <View>
-            <TouchableOpacity
-              key = {props.event.id}
-              >
-             </TouchableOpacity> 
+        <TouchableOpacity onPress={this.callEvPage}>
+           <Text>{this.props.event.name}</Text>
+        </TouchableOpacity> 
       </View>
     )
   }
 }
-               // <Text>{props.event.name}</Text>
-               // <Text>{props.event.descreption}</Text>
-               // <Text>{props.event.location}</Text>
-               // <Text>{props.event.orgs_id}</Text>
+
   
