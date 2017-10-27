@@ -3,6 +3,7 @@ import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight} from 're
 
 import Entryevent from './entryevent';
 import EventPage from './EventPage';
+import OrgProfile from './orgprofile';
 
 export default class List extends React.Component {
   constructor(){
@@ -62,7 +63,7 @@ export default class List extends React.Component {
 
   run () {
     if (this.state.OrgProfile !== -1) {
-      return <Text> org profile : {this.state.OrgProfile } </Text>
+      return <OrgProfile org = {this.state.OrgProfile} > org profile : {this.state.OrgProfile} </OrgProfile>
     }
     if (this.state.eventPage !== -1) {
       return <EventPage callBack = {this.callBack.bind(this)} callOrgProfile = {this.OrgProfile.bind(this)} event = {this.state.eventPage} />
