@@ -45,18 +45,18 @@ export default class App extends React.Component {
         </TouchableOpacity>
       </View>
 
+
    
     if (this.state.showSignIn && !this.state.mainComp && !this.state.showSignUp) {
-    return <SignIn/>
-  }
-  else if(!this.state.showSignIn && this.state.showMain && !this.state.showSignUp){
-    return mainComponent;
-     
-  }
-    else if (this.state.showSignUp && !this.state.mainComp && !this.state.showSignIn) {
-    return <SignUp/>;
+	    return <SignIn/>
+	}
+	else if(!this.state.showSignIn && this.state.showMain && !this.state.showSignUp){
+		return mainComponent; 
+	}
+	else if (this.state.showSignUp && !this.state.mainComp && !this.state.showSignIn) {
+	return <SignUp/>;
 
-  }
+	}
 }
 
   render() {
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: 'center',
     justifyContent: 'center',
+
 
   },
   cont:{
