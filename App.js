@@ -29,21 +29,27 @@ export default class App extends React.Component {
 
   main() {
  
-  const mainComponent =  
-        <View style = {styles.container}>
-        <Image source={require('./images/32799248.png')}/>
+  const mainComponent = 
+ 
+  <View  style = {styles.container}>
+    <Image source={require('./images/32799248.png')}/>
 
-        <Text style={styles.cont}>Wellcom to our applecation ['Humanity'] If you are from our family</Text>
-        <Text style={styles.cont} > and you want to signIn WELLCOM from here press on signIn</Text>
+    <Text style={styles.cont1}>Wellcom to our applecation ['Humanity'] </Text>
 
-        <TouchableOpacity onPress={this.signin.bind(this)}>
-          <Text style={{fontSize:30,padding:30}}>Login</Text>
-        </TouchableOpacity>
-    <Text style={styles.cont}> Or if you want to JOIN US WELLCOM from here</Text>
-        <TouchableOpacity onPress={this.signup.bind(this)}>
-          <Text style={{fontSize:30,padding:30}}>Sign up</Text>
-        </TouchableOpacity>
-      </View>
+    <View style={{flexDirection: 'row'}}>
+      <Text style={styles.cont} > If you are from our family and you want to signIn WELLCOM from here</Text>
+      <TouchableOpacity onPress={this.signin.bind(this)}>
+        <Text style={styles.sign}>Sign in</Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={{flexDirection: 'row'}} >
+      <Text style={styles.cont} >Or if you want to JOIN US WELLCOM from here</Text>
+      <TouchableOpacity onPress={this.signup.bind(this)}>
+        <Text style={styles.sign}>Sign up</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
 
 
    
@@ -77,14 +83,47 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
 
 
+
   },
   cont:{
-    fontSize:16,
+    fontSize:18,
     color:"blue",
     marginLeft:30,
     marginRight:30,
-  },
+    width:220,
+    // borderWidth:2,
+    // borderColor:'gray',
+   marginBottom:25
+    // borderWidth:1,
 
+  },
+  // text:{
+ 
+   
+  //  backgroundColor:'red'
+  // },
+  
+   sign:{
+    fontSize:20,
+   padding:10,
+    borderColor:'#fff',
+   backgroundColor:'lightblue',
+     margin:5,
+     marginLeft:10,
+     marginRight:10,
+     borderBottomLeftRadius:10,
+     borderTopLeftRadius:10,
+     borderTopRightRadius:10,
+    borderBottomRightRadius:10,
+    marginRight:40
+  },
+   cont1:{
+    fontSize:18,
+    color:"blue",
+    marginLeft:10,
+    marginRight:10,
+    marginBottom:40
+}
 
 });
 AppRegistry.registerComponent('App', () => App);

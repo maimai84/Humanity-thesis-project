@@ -50,7 +50,7 @@ export default class UserSignUp extends React.Component {
                 
                 <Text style={styles.textcontaniar} >Username:</Text>
                 <TextInput
-                style={styles.textcontaniar1}
+               style={styles.textcontaniar1}
                    
                     placeholder="Enter Username"
                     returnKeyType = "next"
@@ -107,12 +107,12 @@ const styles = StyleSheet.create({
     fontSize:20,
     padding:10,
     borderColor:'#fff',
-   backgroundColor:'lightblue',
+   
      margin:5,
      marginLeft:10,
      marginRight:10,
      height:50,
-    width:200,
+    width:250,
     borderBottomLeftRadius:10,
      borderTopLeftRadius:10,
      borderTopRightRadius:10,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
      borderTopRightRadius:10,
     borderBottomRightRadius:10, 
     height:50,
-    width:230
+    width:250
   
   }
   

@@ -47,18 +47,20 @@ export default class logInOrgs extends React.Component {
         else{
             return <View>
                 <Text style={{fontWeight: "bold", textAlign: "center", marginBottom: 10,fontSize:30}}> Sign In </Text>
-                <Text>Orgenization name:</Text>
+                <Text   style={styles.textcontaniar}>Orgenization name:</Text>
                 <TextInput
-                    style={{height: 50, width: 200 ,alignItems: "center"}}
+                   style={styles.textcontaniar1}
+                  //   style={{height: 50, width: 200 ,alignItems: "center"}}
                     returnKeyType='next'
                     placeholder="Enter Yuor Username"
                     onChangeText={(name) => this.setState({name})}
                     value={this.state.username}
                 />
-                <Text>Password:</Text>
+                <Text style={styles.textcontaniar}>Password:</Text>
                 <TextInput
+                  style={styles.textcontaniar1}
                     returnKeyType='go'
-                    style={{height: 50, width: 200,alignItems: "center"}}
+                    // style={{height: 50, width: 200,alignItems: "center"}}
                     placeholder="Enter Your Password"
                     secureTextEntry = {true}
                     onChangeText={(password) => this.setState({password})}
@@ -79,3 +81,37 @@ export default class logInOrgs extends React.Component {
         );
     }
 }
+const styles = StyleSheet.create({
+  textcontaniar1:{
+    fontSize:20,
+    padding:10,
+    borderColor:'#fff',
+     margin:5,
+     marginLeft:10,
+     marginRight:10,
+     height:50,
+    width:250,
+    borderBottomLeftRadius:10,
+     borderTopLeftRadius:10,
+     borderTopRightRadius:10,
+    borderBottomRightRadius:10,
+  },
+  
+  textcontaniar:{
+    fontSize:20,
+   padding:10,
+    borderColor:'#fff',
+   backgroundColor:'lightblue',
+     margin:5,
+     marginLeft:10,
+     marginRight:10,
+     borderBottomLeftRadius:10,
+     borderTopLeftRadius:10,
+     borderTopRightRadius:10,
+    borderBottomRightRadius:10, 
+    height:50,
+    width:250
+  
+  }
+  
+});

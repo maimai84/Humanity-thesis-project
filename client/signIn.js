@@ -87,16 +87,16 @@ const styles = StyleSheet.create({
    padding:10,
     borderColor:'#fff',
     // borderWidth:1,
-   backgroundColor:'white',
+   backgroundColor:'lightblue',
     // textShadowOffset:{width:0.5,heigth:0.5},
     // textShadowRadius:5,
      margin:10,
      marginLeft:80,
      marginRight:80,
-     borderBottomLeftRadius:30,
-     borderTopLeftRadius:30,
-     borderTopRightRadius:30,
-    borderBottomRightRadius:30
+     borderBottomLeftRadius:10,
+     borderTopLeftRadius:10,
+     borderTopRightRadius:10,
+    borderBottomRightRadius:10
   
   }
 
