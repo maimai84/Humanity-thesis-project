@@ -45,17 +45,17 @@ goToLogIn () {
     return <LogInUsers/>
 
   else{
-    return <View>
+    return <View style = {{marginTop:200, alignItems: "center" }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> Sign Up </Text>
         
-    <Text>Username:</Text>
+    <Text style = {{marginRight:130}}>Username:</Text>
       <TextInput
           style={{height: 50, width: 200 }}
           placeholder="Enter Username"
           returnKeyType = "next"
           onChangeText={(username) => this.setState({username})}
         />
-        <Text>Email:</Text>
+        <Text style = {{marginRight:160}}>Email:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Email"
@@ -64,7 +64,7 @@ goToLogIn () {
           autoCapitalize = "none"
           onChangeText={(email) => this.setState({email})}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Password"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import LogInUsers from './logInUsers';
 import LogInOrgs from './logInOrgs';
 
@@ -27,8 +27,8 @@ Sign() {
 
 Greeting() {
  
-  const mainComponent =  <View><TouchableOpacity onPress = {this.SignUp.bind(this)}><Text>USER </Text></TouchableOpacity>
-      <TouchableOpacity onPress = {this.Sign.bind(this)}><Text> ORG </Text></TouchableOpacity></View>
+  const mainComponent =  <View style = {styles.container}><TouchableOpacity onPress = {this.SignUp.bind(this)} style = {{marginTop:300 }}><Text>USER </Text></TouchableOpacity>
+      <TouchableOpacity onPress = {this.Sign.bind(this)} style = {{marginTop:100 }}><Text> ORG </Text></TouchableOpacity></View>
 
    
     if (this.state.showUser && !this.state.mainComp && !this.state.showOrg) {
@@ -56,11 +56,10 @@ render() {
 
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'rgb(255, 0, 255)',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+});
