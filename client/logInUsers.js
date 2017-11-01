@@ -1,3 +1,4 @@
+import conf from '../config.js'
 import React from 'react';
 import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from 'react-native';
 import Navbar from './navbar';
@@ -10,14 +11,16 @@ export default class loginInUseres extends React.Component {
       username:'',
       password:'',
       signedIn: false,
-      userInfo: []
+      userInfo:{}
     };
+     fetch( conf.url + '/users/signout',
+      {method:'GET'})
   }
 
   
 submitSignIn () { 
       
-     fetch('https://thawing-garden-23809.herokuapp.com/users/signin',
+     fetch(conf.url + '/users/signin',
       {
           method:'POST',
           headers: {
@@ -27,12 +30,12 @@ submitSignIn () {
           body:JSON.stringify({
             username:this.state.username ,
             password:this.state.password})
-        })
-          .then((response) => response.json())
+        }) .then((response) => response.json())
            .then((data) => {
+            console.log('------------------------------------>')
             console.log(data) 
-              this.state.userInfo[0] = data;
-              this.setState({ signedIn: true})
+              this.state.userInfo.info = data;
+              this.setState({signedIn: true})
           })
             .catch((error) => {
               console.error(error);
@@ -49,20 +52,20 @@ myFunctions(){
 
 goToProfile () {
   if(this.state.signedIn)
-    return <Navbar info = {this.state.userInfo[0]} profile = {"user"}/>
+    return <Navbar info = {this.state.userInfo.info} profile = {"user"} events = {this.state.userInfo.info.events[0]}/>
 
   else{
-    return <View>
+    return <View style = {{marginTop:200,  alignItems: 'center' }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10,fontSize:30}}> Sign In </Text>
-     <Text>Username:</Text>
-      <TextInput
+     <Text style = {{marginRight:130}}>Username:</Text>
+      <TextInput 
           style={{height: 50, width: 200 ,alignItems: 'center'}}
           returnKeyType='next'
           placeholder="Enter Yuor Username"
           onChangeText={(username) => this.setState({username})}
           value={this.state.username}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           returnKeyType='go'
           style={{height: 50, width: 200,alignItems: 'center'}}

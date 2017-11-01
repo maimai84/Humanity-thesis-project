@@ -27,7 +27,7 @@ Sign() {
 
 Greeting() {
  
-  const mainComponent =  <View><TouchableOpacity onPress = {this.SignUp.bind(this)}><Text>USER </Text></TouchableOpacity>
+  const mainComponent =  <View style = {{marginTop:280, alignItems: "center" }}><TouchableOpacity onPress = {this.SignUp.bind(this)}><Text>USER </Text></TouchableOpacity>
       <TouchableOpacity onPress = {this.Sign.bind(this)}><Text> ORG </Text></TouchableOpacity></View>
 
    
@@ -53,14 +53,5 @@ render() {
     
     );
   }
-
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'rgb(255, 0, 255)',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

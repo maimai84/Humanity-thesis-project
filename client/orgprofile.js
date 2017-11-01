@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import allStyle from './style.js';
 
-const styles = StyleSheet.create(allStyle.userprofile);
 
 export default class Orgprofile extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ export default class Orgprofile extends React.Component {
     }
     render() {
       return (
-        <View style={styles.container}>
+        <View>
         <Text>
           {this.props.info[0].name}
         </Text>

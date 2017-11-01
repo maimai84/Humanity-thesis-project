@@ -1,52 +1,66 @@
 import React from "react";
-import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight} from 'react-native'
 
-import Entryevent from './entryevent';
-
-
-
+import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight, Image} from 'react-native'
+import Entryevent from './entryevent'
+import EventPage from './EventPage';
+import OrgProfile from './orgprofile';
 
 export default class List extends React.Component {
-  constructor(){
-    super();
-      this.state = {eventlist:[]};
+  constructor(props){
+    super(props);
+    this.state = {
+      eventlist : props.events,
+      eventPage : -1,
+      OrgID:-1
+    };
   }
+  
+  // EvPage (ind) {
+  //   console.log("clicked on an event at index : " , ind );
+  //   var ev = this.state.eventlist[ind];
+  //   this.setState({
+  //     eventlist:[],
+  //     eventPage:ev,
+  //     OrgID:-1
+  //   })
+  //   this.run();
+  // }
 
 
-getEvents () {
-   fetch('https://thawing-garden-23809.herokuapp.com/events',
-    {method: 'GET'})
-
-  .then((response) => response.json())
-
-   .then((data) => {
-    
-        this.setState({eventlist: data})
-        console.log(this.state.eventlist)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-
-run () {
-
-  if(this.state.eventlist.length)
-    return this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event} /> ))
-
-  return <TouchableHighlight onPress = {this.getEvents.bind(this)}>
-        <Text>Events</Text>
-        </TouchableHighlight>
-}
+ 
 
 
 
-render() {
-    return(
-      <View>{this.run()}</View>
+  // callBack () {
+  //   this.setState({
+  //     eventlist:[],
+  //     eventPage:-1,
+  //     OrgID:-1
+  //   });
+  //   this.run();
+  // }
+
+  // run () {
+  //   if (this.state.OrgID !== -1) {
+  //     return <OrgProfile org_id = {this.state.OrgID} > org profile : {this.state.OrgID} </OrgProfile>
+  //   }
+  //   if (this.state.eventPage !== -1) {
+  //     return <EventPage callBack = {this.callBack.bind(this)} callOrgProfile = {this.OrgProfile.bind(this)} event = {this.state.eventPage} />
+  //   }
+  //   if(this.state.eventlist.length)
+  //     return 
+
+
+  //   this.getEvents.bind(this)();
+  // }
+  
+    render() {
+        return(
+            <View>
+            <Image source={require("../images/blue.jpg")} >
+              {this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event}/> ))}
+              </Image>
+            </View>
     )
   }
 }
-
-
-

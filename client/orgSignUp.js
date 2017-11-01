@@ -19,7 +19,7 @@ export default class OrgSignUp extends React.Component {
   }
 
 onSignUp () {
-   fetch('https://thawing-garden-23809.herokuapp.com/orgs/signup', {
+   fetch(conf.url + '/orgs/signup', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -50,17 +50,17 @@ goToLogIn () {
     return <LogInOrgs/>
 
   else{
-    return <View>
+    return <View style = {{alignItems:'center',marginTop:170}}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> Sign Up </Text>
         
-        <Text>Username:</Text>
+        <Text style = {{marginRight:130}}>Username:</Text>
         <TextInput
           style={{height: 50, width: 200 }}
           placeholder="Enter name"
           returnKeyType = "next"
           onChangeText={(name) => this.setState({name})}
         />
-        <Text>Email:</Text>
+        <Text style = {{marginRight:160}}>Email:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Email"
@@ -69,14 +69,14 @@ goToLogIn () {
           autoCapitalize = "none"
           onChangeText={(email) => this.setState({email})}
         />
-        <Text>Description:</Text>
+        <Text style = {{marginRight:120}}>Description:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter description of your work"
           returnKeyType = "next"
           onChangeText={(description) => this.setState({description})}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Password"
