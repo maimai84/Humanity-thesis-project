@@ -1,3 +1,4 @@
+import conf from '../config.js'
 import React from 'react';
 import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from 'react-native';
 import Navbar from './navbar';
@@ -10,16 +11,16 @@ export default class loginInUseres extends React.Component {
       username:'',
       password:'',
       signedIn: false,
-      userInfo: []
+      userInfo:{}
     };
-     fetch('https://thawing-garden-23809.herokuapp.com/orgs/signout',
+     fetch( conf.url + '/users/signout',
       {method:'GET'})
   }
 
   
 submitSignIn () { 
       
-     fetch('https://thawing-garden-23809.herokuapp.com/users/signin',
+     fetch(conf.url + '/users/signin',
       {
           method:'POST',
           headers: {
@@ -33,15 +34,14 @@ submitSignIn () {
            .then((data) => {
             console.log('------------------------------------>')
             console.log(data) 
-              this.state.userInfo[0] = data;
+              this.state.userInfo.info = data;
               this.setState({signedIn: true})
           })
             .catch((error) => {
               console.error(error);
      });
 }
-// JSON.parse(data._bodyText)
-// JSON.parse(data._bodyText)
+
 
 
 
@@ -52,7 +52,7 @@ myFunctions(){
 
 goToProfile () {
   if(this.state.signedIn)
-    return <Navbar info = {this.state.userInfo[0]} profile = {"user"} events = {this.state.userInfo[0].events[0]}/>
+    return <Navbar info = {this.state.userInfo.info} profile = {"user"} events = {this.state.userInfo.info.events[0]}/>
 
   else{
     return <View style = {{marginTop:200,  alignItems: 'center' }}>

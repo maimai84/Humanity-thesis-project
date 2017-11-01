@@ -1,20 +1,36 @@
 import React from 'react';
+import { Text, View, TouchableOpacity} from 'react-native';
+import EventPage from './EventPage'
 
-import { Text, View,TouchableOpacity} from 'react-native';
 export default class Entryevent extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      evPage:false
+    };
+    
   }
+
+  showCurrent(){
+    this.setState({evPage:!this.state.evPage})
+  }
+  callEvPage (event) {
+    const list =<View> 
+    <TouchableOpacity onPress={this.showCurrent.bind(this)}>
+      <Text style={{fontSize:20,color:'white', marginBottom:10}}>{this.props.event.name}</Text>
+    </TouchableOpacity> 
+     <Text style={{color:'white'}}>Click here to view details</Text>
+     </View>;
+        if(this.state.evPage){
+      return <EventPage event={event}/>
+        }
+    return  list;
+  }
+  
   render() {
     return(
-      <View>
-            <TouchableOpacity>
-               <Text>{this.props.event.name}</Text>
-               <Text>{this.props.event.description}</Text>
-               <Text>{this.props.event.location}</Text>
-               <Text>{this.props.event.org_id}</Text>
-
-             </TouchableOpacity> 
+      <View style = {{marginLeft:50,marginTop:30}}>
+       {this.callEvPage(this.props.event)}
       </View>
     )
   }

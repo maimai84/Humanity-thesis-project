@@ -15,7 +15,7 @@ export default class UserSignUp extends React.Component {
   }
 
 onSignUp () {
-   fetch('https://thawing-garden-23809.herokuapp.com/users/signup', {
+   fetch(conf.url + '/users/signup', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',

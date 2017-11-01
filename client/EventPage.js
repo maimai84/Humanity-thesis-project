@@ -1,32 +1,46 @@
 import React from 'react';
-import { Text, View, TouchableOpacity} from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
+
 
 export default class EventPage extends React.Component {
   constructor(props) {
     super(props);
-    this.callOrgProfile = () => {
-      console.log('call org profile : ' , props.event.org_id);
-      props.callOrgProfile(props.event.org_id);
-    }
   }
   render() {
     return(
       <View>
-        <Text>{this.props.event.name}</Text>
-        <Text>{this.props.event.description}</Text>
-        <Text>{this.props.event.location}</Text>
-        
-        <TouchableOpacity onPress={this.callOrgProfile}>
-           <Text>{this.props.event.org_id}</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.props.callBack}>
-           <Text>back to event list</Text>
-        </TouchableOpacity>
-
+      <Image source={require("../images/blue.jpg")} >
+        <TouchableOpacity >
+           <Text>{this.props.event.name}</Text>
+           <Text>{this.props.event.description}</Text>
+           <Text>{this.props.event.location}</Text>
+           <Text>{this.props.event.time}</Text>
+        </TouchableOpacity> 
+        </Image>
       </View>
     )
   }
 }
-
-  
+// const styles = StyleSheet.create(
+//     {
+//         container: {
+    
+//             fontSize: 14,
+//             lineHeight: 24,
+//             color: "black"
+//         },
+//         container1: {  
+//             fontSize: 14,
+//             lineHeight: 24,
+//             color: "blue"
+//         },
+//         cont: {
+//             backgroundColor:"#99ceff",
+//             width:350,
+//             marginLeft:0,
+//             marginRight:0
+     
+//         //    justifyContent: 'space-between'
+//         }
+//     }
+// );

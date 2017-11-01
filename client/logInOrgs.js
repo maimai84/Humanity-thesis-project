@@ -12,15 +12,15 @@ export default class logInOrgs extends React.Component {
       name:'',
       password:'',
       signedIn: false,
-      orgInfo: []
+      orgInfo: {}
     };
-    fetch('https://thawing-garden-23809.herokuapp.com/orgs/signout',
+    fetch(conf.url + '/orgs/signout',
       {method:'GET'})
   }
 
 submitSignIn () { 
       
-     fetch('https://thawing-garden-23809.herokuapp.com/orgs/signin',
+     fetch(conf.url + '/orgs/signin',
       {
           method:'POST',
           headers: {
@@ -34,7 +34,7 @@ submitSignIn () {
            .then((data) => {
             console.log('------------------------------------>')
             console.log(data) 
-              this.state.orgInfo[0] = data;
+              this.state.orgInfo.info = data;
               this.setState({signedIn: true})
           })
             .catch((error) => {
@@ -44,7 +44,7 @@ submitSignIn () {
   
 goToProfile () {
   if(this.state.signedIn)
-    return <Navbar info = {this.state.orgInfo[0]} profile = {"org"}/>;
+    return <Navbar info = {this.state.orgInfo.info} profile = {"org"}/>;
 
   else{
     return <View style = {{marginTop:200,  alignItems: 'center' }}>

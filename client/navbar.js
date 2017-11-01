@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity} from 'react-native';
-
+import conf from '../config.js'
 import OptsList from './optslist';
 import UserProfile from './userprofile';
 import OrgProfile from './orgprofile';
@@ -17,34 +17,48 @@ export default class Navbar extends React.Component {
     this.state = {
      type: props.profile,
      info: props.info,
-     eventName: props.events.name,
+     myEvents: props.events.name,
+     allEvents: [],
      showProfile:true,
      showEvents:false,
      getOut: false
     };
-    this.nav = <View style={{flexDirection: 'row', borderRadius: 15,
+    this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
-  borderRadius: 0.5,
+  borderRadius: 2,
       backgroundColor: '#00bfff',}} >
-  			<Text>                 </Text>
+  			  <Text>             </Text>
       	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
-      	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.showevents.bind(this)}><Text>EVENTS</Text></TouchableOpacity>
+      	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.getEvents.bind(this)}><Text>FIND EVENTS</Text></TouchableOpacity>
       		<Text>                 </Text>
-      	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.logout.bind(this)}><Text>LOGOUT</Text></TouchableOpacity>
+      	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.logout.bind(this)}><Text>LOGOUT {'\n'}{'\n'}</Text></TouchableOpacity>
+
       	</View>
  } 
-
+getEvents () {
+  fetch(conf.url + '/events',{method:'GET'})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log('-All Events---------------->')
+    console.log(data) 
+      this.setState({allEvents: data})
+      this.setState({showProfile: false})
+      this.setState({showEvents: true})
+  })
+    .catch((error) => {
+      console.error(error);
+     });
+}
  showevents(){
- 	this.setState({showProfile: false})
- 	this.setState({showEvents: true})
+ 	
  }
  showprofile(){
   this.setState({showProfile: true})
   this.setState({showEvents: false})
  }
  logout(){
-  fetch('https://thawing-garden-23809.herokuapp.com/users/signout',
+  fetch(conf.url + '/users/signout',
       {method:'GET'})
   this.setState({showProfile: false})
   this.setState({showEvents: false})
@@ -61,8 +75,8 @@ export default class Navbar extends React.Component {
    navb() {
    	if(this.state.type === "user" && this.state.showProfile){
    	return  <UserProfile information={this.state.info}/>
-   	}else if(this.state.eventName && this.state.showEvents){
-   	return  <List evName = {this.state.eventName}/>
+   	}else if(this.state.showEvents){
+   	return  <List events = {this.state.allEvents}/>
    	}
      if(this.state.getOut && !this.state.showProfile || !this.state.showEvents){
       return <App/>

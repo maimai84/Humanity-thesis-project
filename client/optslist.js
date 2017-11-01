@@ -9,7 +9,7 @@ export default class OptsList extends React.Component {
   constructor(props) {
     super(props);
     this.getEvents = () => {
-      fetch('http:192.168.8.140:3336/events', 
+      fetch(conf.url + '/events', 
         {
           'method':'GET', 
           'headers': { 'Accept': 'application/json', 'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ export default class OptsList extends React.Component {
     }
 
     this.getProfile = () => {
-      fetch('http:192.168.8.140:3336/' + props.type + 's/' + props.type + 'info', 
+      fetch(conf.url  + props.type + 's/' + props.type + 'info', 
         {
           'method':'GET', 
           'headers': { 'Accept': 'application/json', 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export default class OptsList extends React.Component {
     }
 
     this.logMeOut = () => {
-      fetch('http:192.168.8.140:3336/users/signout', {'method':'GET'})
+      fetch(conf.url + '/users/signout', {'method':'GET'})
         .then((reponse)=> {
           props.whatToView("signed out");
           console.log('logged out ? ',reponse._bodyInit);

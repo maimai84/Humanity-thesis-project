@@ -19,7 +19,7 @@ export default class OrgSignUp extends React.Component {
   }
 
 onSignUp () {
-   fetch('https://thawing-garden-23809.herokuapp.com/orgs/signup', {
+   fetch(conf.url + '/orgs/signup', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
