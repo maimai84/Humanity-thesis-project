@@ -4,6 +4,7 @@ import allStyle from "./style.js";
 
 // const styles = StyleSheet.create(allStyle.userprofile);
 
+
 export default class Orgprofile extends React.Component {
 
   constructor(props) {
@@ -39,11 +40,10 @@ export default class Orgprofile extends React.Component {
   render() {
     if (this.state.orgDetails !== -1) {
       return (
-        <View style={styles.container}>
-          <Text> org name :  {this.state.orgDetails.name} </Text>
-          <Text> org description : {this.state.orgDetails.description} </Text>
-          <Text> org email : {this.state.orgDetails.email} </Text>
-          <Text> org rate : {this.state.orgDetails.rate} </Text>
+        <View>
+        <Text>
+          {this.props.info[0].name}
+        </Text>
         </View>
       );
 
