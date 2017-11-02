@@ -1,34 +1,65 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
+
+import React from "react";
+import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from "react-native";
+import OrgProfile from "./orgprofile";
+import Navbar from "./navbar";
+
+import conf from '../config.js';
+
 export default class logInOrgs extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {username:'',password:''};
-    this.submitSignIn =()=>{
-        fetch('https://thawing-garden-23809.herokuapp.com/orgs/signin',{'method':'POST',
+    this.state = {
+      name:'',
+      password:'',
+      signedIn: false,
+      orgInfo: {}
+    };
+    fetch(conf.url + '/orgs/signout',
+      {method:'GET'})
+  }
+    submitSignIn () { 
+      
+     fetch(conf.url + '/orgs/signin',
+      {
+          method:'POST',
           headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           },
-          body:JSON.stringify({username:this.state.username , password:this.state.password})})
-          .then((reponse)=> (console.log('data : ',reponse._bodyInit)))
-      }
-  }
+          body:JSON.stringify({
+            name:this.state.name ,
+            password:this.state.password})
+        }).then((response) => response.json())
+           .then((data) => {
+            console.log('------------------------------------>')
+            console.log(data) 
+              this.state.orgInfo.info = data;
+              this.setState({signedIn: true})
+          })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
   
 
-  render() {
-    return (
-     <View style={styles.container}>
+goToProfile () {
+  if(this.state.signedIn)
+    return <Navbar info = {this.state.orgInfo.info} profile = {"org"}/>;
+
+  else{
+    return <View style = {{marginTop:200,  alignItems: 'center' }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10,fontSize:30}}> Sign In </Text>
-     <Text>Orgenization name:</Text>
+     <Text style = {{marginRight:80}}>Orgenization name:</Text>
       <TextInput
           style={{height: 50, width: 200 ,alignItems: 'center'}}
           returnKeyType='next'
           placeholder="Enter Yuor Username"
-          onChangeText={(username) => this.setState({username})}
+          onChangeText={(name) => this.setState({name})}
           value={this.state.username}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           returnKeyType='go'
           style={{height: 50, width: 200,alignItems: 'center'}}
@@ -37,23 +68,17 @@ export default class logInOrgs extends React.Component {
           onChangeText={(password) => this.setState({password})}
           value={this.state.password}
         />
-        <TouchableOpacity style={styles.loginSubmitButt} onPress={this.submitSignIn.bind(this)}>
-        <Text>submitSignIn</Text>
-        </TouchableOpacity>
+        <Button title = "submit" onPress = {this.submitSignIn.bind(this)}/>
       </View>
-    
-    );
-  }
+    }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'gray',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loginSubmitButt:{
-    backgroundColor:'green',
-    paddingVertical:15,
-  }
-});
+
+
+    render() {
+        return (
+            <View>
+                {this.goToProfile()}
+            </View>
+        );
+    }
+}

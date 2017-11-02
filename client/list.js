@@ -1,52 +1,28 @@
 import React from "react";
-import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight} from 'react-native'
-
-import Entryevent from './entryevent';
-
-
-
+import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight, Image} from 'react-native'
+import Entryevent from './entryevent'
+import EventPage from './EventPage';
+import OrgProfile from './orgprofile';
 
 export default class List extends React.Component {
-  constructor(){
-    super();
-      this.state = {eventlist:[]};
+
+  constructor(props){
+    super(props);
+    this.state = {
+      eventlist : props.events,
+      eventPage : -1,
+      OrgID:-1
+    };
   }
-
-
-getEvents () {
-   fetch('https://thawing-garden-23809.herokuapp.com/events',
-    {method: 'GET'})
-
-  .then((response) => response.json())
-
-   .then((data) => {
-    
-        this.setState({eventlist: data})
-        console.log(this.state.eventlist)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-
-run () {
-
-  if(this.state.eventlist.length)
-    return this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event} /> ))
-
-  return <TouchableHighlight onPress = {this.getEvents.bind(this)}>
-        <Text>HELLO</Text>
-        </TouchableHighlight>
-}
-
-
-
-render() {
-    return(
-      <View>{this.run()}</View>
+  
+  
+    render() {
+        return(
+            <View>
+            <Image source={require("../images/blue.jpg")} >
+              {this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event}/> ))}
+              </Image>
+            </View>
     )
   }
 }
-
-
-
