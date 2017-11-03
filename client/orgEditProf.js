@@ -2,27 +2,29 @@ import React from "react";
 import { Text, View, TextInput, Button} from "react-native";
 import conf from "../config"
                 
-export default class UserEditProf extends React.Component {
+export default class OrgEditProf extends React.Component {
   constructor (props) {
     super(props);
     this.propsFunc = Object.keys(props)[0];
     this.state = {
-      username: "",
+      name: "",
       email: "",
-      password: ""
+      password: "",
+      description : ""
     };
   }
 
   onUpdate () {
-    fetch(conf.url + 'users/editprofile', {
+    fetch(conf.url + 'orgs/editprofile', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: this.state.username,
+        name: this.state.name,
         email: this.state.email,
+        description: this.state.description,
         password:this.state.password
       })
     })
@@ -42,12 +44,12 @@ export default class UserEditProf extends React.Component {
       <View style = {{marginTop:200, alignItems: "center" }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> update my profile data </Text>
       
-      <Text style = {{marginRight:130}}>Update Username:</Text>
+      <Text style = {{marginRight:130}}>Update Name:</Text>
       <TextInput
         style={{height: 50, width: 200 }}
-        placeholder="Enter New Username"
+        placeholder="Enter New Name"
         returnKeyType = "next"
-        onChangeText={(username) => this.setState({username})}
+        onChangeText={(name) => this.setState({name})}
       />
       <Text style = {{marginRight:160}}>Update Email:</Text>
       <TextInput
@@ -65,6 +67,14 @@ export default class UserEditProf extends React.Component {
         returnKeyType = "go"
         secureTextEntry = {true}
         onChangeText={(password) => this.setState({password})}
+      />
+      <Text style = {{marginRight:130}}>Update Description:</Text>
+      <TextInput
+        style={{height: 50, width: 200}}
+        placeholder="Enter New Description"
+        returnKeyType = "go"
+        secureTextEntry = {true}
+        onChangeText={(description) => this.setState({description})}
       />
       <Button title = "submit" onPress = {this.onUpdate.bind(this)} />
     </View>

@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19001,
-  "packagerPort": 19002,
-  "packagerPid": 7620,
-  "expoServerNgrokUrl": "https://n3-sxf.ashardweedar.humanity.exp.direct",
-  "packagerNgrokUrl": "https://packager.fs-x6s.ashardweedar.humanity.exp.direct",
-  "ngrokPid": 7719
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
