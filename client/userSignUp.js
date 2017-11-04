@@ -1,21 +1,22 @@
-import React from 'react';
-import { Text, View, TextInput, KeyboardAvoidingView, Button} from 'react-native';
-import LogInUsers from './logInUsers';
+import React from "react";
+import { Text, View, TextInput, KeyboardAvoidingView,StyleSheet, Button} from "react-native";
+import LogInUsers from "./logInUsers";
+import conf from "../config"
                 
-
 export default class UserSignUp extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      signedUp: false
+    constructor(){
+        super();
+        this.state = {
+            username: "",
+            email: "",
+            password: "",
+            signedUp: false
+        };
     }
-  }
+
 
 onSignUp () {
-   fetch('https://thawing-garden-23809.herokuapp.com/users/signup', {
+   fetch(conf.url + '/users/signup', {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -35,27 +36,28 @@ onSignUp () {
       });
 }
 
-myFunctions(){
- this.onSignUp();
- this.setState({signedUp: true});
-}
+    myFunctions(){
+        this.onSignUp();
+        this.setState({signedUp: true});
+    }
 
-goToLogIn () {
-  if(this.state.signedUp)
-    return <LogInUsers/>
+    goToLogIn () {
+        if(this.state.signedUp)
+            return <LogInUsers/>;
+
 
   else{
-    return <View>
+    return <View style = {{marginTop:200, alignItems: "center" }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> Sign Up </Text>
         
-    <Text>Username:</Text>
+    <Text style = {{marginRight:130}}>Username:</Text>
       <TextInput
           style={{height: 50, width: 200 }}
           placeholder="Enter Username"
           returnKeyType = "next"
           onChangeText={(username) => this.setState({username})}
         />
-        <Text>Email:</Text>
+        <Text style = {{marginRight:160}}>Email:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Email"
@@ -64,7 +66,7 @@ goToLogIn () {
           autoCapitalize = "none"
           onChangeText={(email) => this.setState({email})}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           style={{height: 50, width: 200}}
           placeholder="Enter Password"
@@ -75,17 +77,16 @@ goToLogIn () {
         <Button title = "submit" onPress = {this.myFunctions.bind(this)} />
       </View>
     }
-}
-
-
-
-
-render() {
-    return (
-      <View>
-        {this.goToLogIn()}
-      </View>
-    );
   }
-}
 
+
+
+
+    render() {
+        return (
+            <View>
+                {this.goToLogIn()}
+            </View>
+        );
+    }
+}

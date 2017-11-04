@@ -1,7 +1,10 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from 'react-native';
-import OrgProfile from './orgprofile';
-import Navbar from './navbar';
+
+import React from "react";
+import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from "react-native";
+import OrgProfile from "./orgprofile";
+import Navbar from "./navbar";
+
+import conf from '../config.js';
 
 export default class logInOrgs extends React.Component {
 
@@ -11,13 +14,14 @@ export default class logInOrgs extends React.Component {
       name:'',
       password:'',
       signedIn: false,
-      orgInfo: []
+      orgInfo: {}
     };
+    fetch(conf.url + '/orgs/signout',
+      {method:'GET'})
   }
-
-submitSignIn () { 
+    submitSignIn () { 
       
-     fetch('https://thawing-garden-23809.herokuapp.com/orgs/signin',
+     fetch(conf.url + '/orgs/signin',
       {
           method:'POST',
           headers: {
@@ -27,26 +31,27 @@ submitSignIn () {
           body:JSON.stringify({
             name:this.state.name ,
             password:this.state.password})
-        })
-          .then((response) => response.json())
+        }).then((response) => response.json())
            .then((data) => {
+            console.log('------------------------------------>')
             console.log(data) 
-              this.state.orgInfo[0] = data;
-              this.setState({ signedIn: true})
+              this.state.orgInfo.info = data;
+              this.setState({signedIn: true})
           })
             .catch((error) => {
-              console.error(error);
-     });
-}
+                console.error(error);
+            });
+    }
   
+
 goToProfile () {
   if(this.state.signedIn)
-    return <Navbar info = {this.state.orgInfo[0]} profile = {"org"}/>
+    return <Navbar info = {this.state.orgInfo.info} profile = {"org"}/>;
 
   else{
-    return <View>
+    return <View style = {{marginTop:200,  alignItems: 'center' }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10,fontSize:30}}> Sign In </Text>
-     <Text>Orgenization name:</Text>
+     <Text style = {{marginRight:80}}>Orgenization name:</Text>
       <TextInput
           style={{height: 50, width: 200 ,alignItems: 'center'}}
           returnKeyType='next'
@@ -54,7 +59,7 @@ goToProfile () {
           onChangeText={(name) => this.setState({name})}
           value={this.state.username}
         />
-        <Text>Password:</Text>
+        <Text style = {{marginRight:130}}>Password:</Text>
         <TextInput
           returnKeyType='go'
           style={{height: 50, width: 200,alignItems: 'center'}}
@@ -69,12 +74,11 @@ goToProfile () {
 }
 
 
-
-  render() {
-    return (
-      <View>
-      {this.goToProfile()}
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View>
+                {this.goToProfile()}
+            </View>
+        );
+    }
 }
