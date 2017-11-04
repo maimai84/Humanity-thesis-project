@@ -49,6 +49,7 @@ export default class LogInUsers extends React.Component {
 
 
 goToProfile () {
+
   if(this.state.signedIn){
     return <Navbar info = {this.state.userInfo.info} profile = {"user"} events = {this.state.userInfo.info.events}/>
   } else {
