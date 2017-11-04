@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
     this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
   borderRadius: 2,
-      backgroundColor: '#00bfff',}} >
+      backgroundColor: '#00bfff'}} >
   			  <Text>             </Text>
       	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
@@ -50,7 +50,7 @@ getEvents () {
       console.error(error);
      });
 }
- showevents(){
+ showMyEvents(){
  	
  }
  showprofile(){

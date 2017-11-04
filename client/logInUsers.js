@@ -52,7 +52,7 @@ myFunctions(){
 
 goToProfile () {
   if(this.state.signedIn)
-    return <Navbar info = {this.state.userInfo.info} profile = {"user"} events = {this.state.userInfo.info.events[0]}/>
+    return <Navbar info = {this.state.userInfo.info} profile = {"user"} events = {this.state.userInfo.info.events}/>
 
   else{
     return <View style = {{marginTop:200,  alignItems: 'center' }}>

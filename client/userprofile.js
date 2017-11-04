@@ -12,7 +12,7 @@ export default class UserProfile extends React.Component {
   }
 
 
-    showUserProfile(){
+    showMyEvents(){
 
     }
 
@@ -33,12 +33,12 @@ export default class UserProfile extends React.Component {
           <Text style = {{marginTop: 20,color:'white',fontSize: 20, marginLeft: 50 }}>5</Text>
 
           <Text style = {{marginTop: 20, marginLeft: 30,fontSize: 20,
-          fontWeight: 'bold',color:'white'}}>Phon number:</Text>
+          fontWeight: 'bold',color:'white'}}>Phone Number:</Text>
           <Text style = {{marginTop: 20,color:'white',fontSize: 15, marginLeft: 50,fontSize: 20 }}>0798726360</Text>
           <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
           <Button  style = {{width: 50, height: 70}} title = "Edit Profile" />
           <Text>                          </Text>
-          <Button style = {{width: 50, height: 70}} title = "My Events" />
+          <Button style = {{width: 50, height: 70}} title = "My Events" onPress = {}/>
           </View>
          </Image>
 
