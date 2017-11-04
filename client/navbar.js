@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import conf from '../config.js'
-import OptsList from './optslist';
 import UserProfile from './userprofile';
 import OrgProfile from './orgprofile';
 import List from './list';
@@ -17,7 +16,7 @@ export default class Navbar extends React.Component {
     this.state = {
      type: props.profile,
      info: props.info,
-     myEvents: props.events.name,
+     myEvents: props.events,
      allEvents: [],
      showProfile:true,
      showEvents:false,
@@ -26,7 +25,7 @@ export default class Navbar extends React.Component {
     this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
   borderRadius: 2,
-      backgroundColor: '#00bfff',}} >
+      backgroundColor: '#00bfff'}} >
   			  <Text>             </Text>
       	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
@@ -50,7 +49,7 @@ getEvents () {
       console.error(error);
      });
 }
- showevents(){
+ showMyEvents(){
  	
  }
  showprofile(){
@@ -74,7 +73,7 @@ getEvents () {
 
    navb() {
    	if(this.state.type === "user" && this.state.showProfile){
-   	return  <UserProfile information={this.state.info}/>
+   	return  <UserProfile events={this.state.info.events}/>
    	}else if(this.state.showEvents){
    	return  <List events = {this.state.allEvents}/>
    	}

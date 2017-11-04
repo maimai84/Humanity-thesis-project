@@ -1,18 +1,19 @@
-import React from 'react';
-import { Text, View, TextInput, KeyboardAvoidingView, Button} from 'react-native';
-import LogInUsers from './logInUsers';
+import React from "react";
+import { Text, View, TextInput, KeyboardAvoidingView,StyleSheet, Button} from "react-native";
+import LogInUsers from "./logInUsers";
+import conf from "../config"
                 
-
 export default class UserSignUp extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      signedUp: false
+    constructor(){
+        super();
+        this.state = {
+            username: "",
+            email: "",
+            password: "",
+            signedUp: false
+        };
     }
-  }
+
 
 onSignUp () {
    fetch(conf.url + '/users/signup', {
@@ -35,14 +36,15 @@ onSignUp () {
       });
 }
 
-myFunctions(){
- this.onSignUp();
- this.setState({signedUp: true});
-}
+    myFunctions(){
+        this.onSignUp();
+        this.setState({signedUp: true});
+    }
 
-goToLogIn () {
-  if(this.state.signedUp)
-    return <LogInUsers/>
+    goToLogIn () {
+        if(this.state.signedUp)
+            return <LogInUsers/>;
+
 
   else{
     return <View style = {{marginTop:200, alignItems: "center" }}>
@@ -75,17 +77,16 @@ goToLogIn () {
         <Button title = "submit" onPress = {this.myFunctions.bind(this)} />
       </View>
     }
-}
-
-
-
-
-render() {
-    return (
-      <View>
-        {this.goToLogIn()}
-      </View>
-    );
   }
-}
 
+
+
+
+    render() {
+        return (
+            <View>
+                {this.goToLogIn()}
+            </View>
+        );
+    }
+}
