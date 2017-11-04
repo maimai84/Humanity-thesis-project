@@ -8,14 +8,18 @@ export default class EventPage extends React.Component {
       
         event: props.event,
         
-        joined:false
+        joined:false,
+        unjoined:false
         };
   }
   myFunctions(){
       this.onJoin();
       this.setState({joined: true});
   }
-
+  myUnFunctions(){
+      this.onUnJoin();
+      this.setState({unjoined: true});
+  }
   onJoin() {
       fetch(conf.url + '/events/join', {
       method: 'POST',
@@ -37,6 +41,27 @@ export default class EventPage extends React.Component {
         console.error(error);
       });
 }
+onUnJoin() {
+      fetch(conf.url + '/events/unjoin', {
+      method: 'DELETE',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+  },
+      body: JSON.stringify({
+      id: this.state.event.id,
+      org_id:this.state.event.org_id
+  })
+  })
+ .then((response) => response.json())
+      .then((data) => {
+       console.log(data)
+       Alert.alert( 'UNJOIN ', data.message, [{text: 'OK', onPress: () => console.log('OK Pressed')}, ], { cancelable: true } )
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+}
   render() {
     return(
       <View>
@@ -47,6 +72,7 @@ export default class EventPage extends React.Component {
         <Text>{this.props.event.location}</Text>
         <Text>{this.props.event.time}</Text>
           <Button title="join" onPress = {this.myFunctions.bind(this)} />
+          <Button title="unjoin" onPress = {this.myUnFunctions.bind(this)} />
         </TouchableOpacity> 
         </Image>
       </View>
