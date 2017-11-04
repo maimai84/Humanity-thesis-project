@@ -70,9 +70,10 @@ onUnJoin() {
         <Text>{this.props.event.name}</Text>
         <Text>{this.props.event.description}</Text>
         <Text>{this.props.event.location}</Text>
-        <Text>{this.props.event.time}</Text>
-          <Button title="join" onPress = {this.myFunctions.bind(this)} />
-          <Button title="unjoin" onPress = {this.myUnFunctions.bind(this)} />
+        <Text>{this.props.event.time}</Text> 
+        <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
+          <Button title="join" onPress = {this.myFunctions.bind(this)} /><Text>               </Text>
+          <Button title="unjoin" onPress = {this.myUnFunctions.bind(this)} /></View>
         </TouchableOpacity> 
         </Image>
       </View>
@@ -102,3 +103,4 @@ onUnJoin() {
 //         }
 //     }
 // );
+

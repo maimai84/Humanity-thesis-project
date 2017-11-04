@@ -92,3 +92,7 @@ getEvents () {
  		)
   }  
 }
+// <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
+//           <Button  style = {{width: 50, height: 70}} title="join" onPress = {this.myFunctions.bind(this)} />
+//            <Text>                          </Text>
+//           <Button style = {{width: 50, height: 70}} title="unjoin" onPress = {this.myUnFunctions.bind(this)} /></View>
