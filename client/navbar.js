@@ -73,7 +73,7 @@ getEvents () {
 
    navb() {
    	if(this.state.type === "user" && this.state.showProfile){
-   	return  <UserProfile events={this.state.info.events}/>
+   	return  <UserProfile events={this.state.myEvents}/>
    	}else if(this.state.showEvents){
    	return  <List events = {this.state.allEvents}/>
    	}
