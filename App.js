@@ -1,11 +1,11 @@
 import React from 'react';
-import conf from './config.js'
+import conf from './config.js';
 import { StyleSheet, Text, View, AppRegistry, Image, KeyboardAvoidingView, TouchableOpacity, Dimensions} from 'react-native';
 import SignUp from './client/signUp';
 import SignIn from './client/signIn';
+
 import List from './client/list';
 import Navbar from './client/navbar';
-
 export default class App extends React.Component {
   constructor() {
     super();
@@ -20,7 +20,7 @@ export default class App extends React.Component {
     const width = Dimensions.get('window').width
     const height = Dimensions.get('window').height
   }
-  signin =() => {
+  signin = () => {
     this.setState({ showSignUp: false});
     this.setState({ showSignIn: true});
     this.setState({ showMain: false });
@@ -49,16 +49,15 @@ export default class App extends React.Component {
   main() {
  
   const mainComponent =  
-        <View>
+        <View >
         <Image source={require('./images/32799248.png')}/>
-
         <Text >Welcom to our application 'Humanity' If you are from our family</Text>
         <Text > and you want to signIn WELCOM from here press on signIn</Text>
 
         <TouchableOpacity onPress={this.signin.bind(this)}>
           <Text>Sign In</Text>
         </TouchableOpacity>
-        <Text > Or if you want to JOIN US WELCOM from here</Text>
+    <Text > Or if you want to JOIN US WELLCOM from here</Text>
         <TouchableOpacity onPress={this.signup.bind(this)}>
           <Text>Sign Up</Text>
         </TouchableOpacity>

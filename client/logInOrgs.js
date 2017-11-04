@@ -1,8 +1,10 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from 'react-native';
-import OrgProfile from './orgprofile';
-import Navbar from './navbar';
 
+import React from "react";
+import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button} from "react-native";
+import OrgProfile from "./orgprofile";
+import Navbar from "./navbar";
+
+import conf from '../config.js';
 
 export default class logInOrgs extends React.Component {
 
@@ -17,8 +19,7 @@ export default class logInOrgs extends React.Component {
     fetch(conf.url + '/orgs/signout',
       {method:'GET'})
   }
-
-submitSignIn () { 
+    submitSignIn () { 
       
      fetch(conf.url + '/orgs/signin',
       {
@@ -38,10 +39,11 @@ submitSignIn () {
               this.setState({signedIn: true})
           })
             .catch((error) => {
-              console.error(error);
-     });
-}
+                console.error(error);
+            });
+    }
   
+
 goToProfile () {
   if(this.state.signedIn)
     return <Navbar info = {this.state.orgInfo.info} profile = {"org"}/>;
@@ -72,12 +74,11 @@ goToProfile () {
 }
 
 
-
-  render() {
-    return (
-      <View>
-      {this.goToProfile()}
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View>
+                {this.goToProfile()}
+            </View>
+        );
+    }
 }

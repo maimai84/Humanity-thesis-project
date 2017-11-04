@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
-
 export default class EventPage extends React.Component {
   constructor(props) {
     super(props);

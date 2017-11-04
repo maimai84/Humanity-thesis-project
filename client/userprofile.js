@@ -1,24 +1,43 @@
+
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighLight, Image, Button
 } from 'react-native';
+import UserEditProf from './userEditProf';
+import conf from '../config.js';
 
 export default class UserProfile extends React.Component {
   constructor(props) {
       super(props)
       this.state= {
-        information: props.information,
-       
+        events : props.events,
+        information: {},
+        editprofile:false
       }
+      fetch(conf.url + '/users/userinfo',{
+        method:'GET'
+      })
+       .then((response) => response.json())
+           .then((data) => {
+            console.log('----------------->.  NEW DATA')
+            console.log(data) 
+              this.setState({information: data.user})
+          })
+            .catch((error) => {
+                console.error(error);
+            });
   }
 
 
+
+    changeEditeFlag () {
+      this.setState({editprofile:true});
+    }
     showMyEvents(){
 
     }
 
-    render() {
-    return (
-      <View>
+    editProfile(){
+      var profile = <View>
       
       <View style= {{ alignItems:"center",borderColor: 'black', borderRadius: 2,backgroundColor: '#87cefa'}}>
          <Text style = {{marginTop: 20}}>Welcome {this.state.information.username}{'\n'}{'\n'}</Text>
@@ -36,13 +55,28 @@ export default class UserProfile extends React.Component {
           fontWeight: 'bold',color:'white'}}>Phone Number:</Text>
           <Text style = {{marginTop: 20,color:'white',fontSize: 15, marginLeft: 50,fontSize: 20 }}>0798726360</Text>
           <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
-          <Button  style = {{width: 50, height: 70}} title = "Edit Profile" />
+          <Button  style = {{width: 50, height: 70}} title = "Edit Profile" onPress = {this.changeEditeFlag.bind(this)}/>
           <Text>                          </Text>
-          <Button style = {{width: 50, height: 70}} title = "My Events" onPress = {}/>
+          <Button style = {{width: 50, height: 70}} title = "My Events" onPress = {this.showMyEvents.bind(this)}/>
           </View>
          </Image>
 
         </View>
+
+      
+      if(this.state.editprofile){
+        return <UserEditProf/>;
+      }
+
+      return profile;
+
+    }
+
+    render() {
+    return (
+      <View>
+      {this.editProfile()}
+      </View>
     
     );
   }
@@ -51,16 +85,5 @@ export default class UserProfile extends React.Component {
 
 
 
-/*<View style={{flexDirection: 'row',
-    borderColor: 'black',
-  borderRadius: 20,
-      backgroundColor: '#00bfff',}} >
-          <Text>             </Text>
-        <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
-          <Text>                  </Text>
-        <TouchableOpacity style = {{marginTop: 30}} onPress = {this.showevents.bind(this)}><Text>EVENTS</Text></TouchableOpacity>
-          <Text>                 </Text>
-        <TouchableOpacity style = {{marginTop: 30}} onPress = {this.logout.bind(this)}><Text>LOGOUT {'\n'}{'\n'}</Text></TouchableOpacity>
 
-        </View>*/
 
