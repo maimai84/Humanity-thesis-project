@@ -5,7 +5,6 @@ import conf from "../config"
 export default class UserEditProf extends React.Component {
   constructor (props) {
     super(props);
-    this.propsFunc = Object.keys(props)[0];
     this.state = {
       username: "",
       email: "",
@@ -28,9 +27,7 @@ export default class UserEditProf extends React.Component {
     })
       .then((response) => console.log(response))
       .then(({data}) => {
-       console.log(data)
-        // call the function from the navbar here ....
-        propsFunc(data);
+       console.log(data);
       })
       .catch((error) => {
         console.error(error);

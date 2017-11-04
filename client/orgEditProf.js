@@ -5,7 +5,6 @@ import conf from "../config"
 export default class OrgEditProf extends React.Component {
   constructor (props) {
     super(props);
-    this.propsFunc = Object.keys(props)[0];
     this.state = {
       name: "",
       email: "",
@@ -30,9 +29,7 @@ export default class OrgEditProf extends React.Component {
     })
       .then((response) => console.log(response))
       .then(({data}) => {
-       console.log(data)
-        // call the function from the navbar here ....
-        propsFunc(data);
+       console.log(data);
       })
       .catch((error) => {
         console.error(error);
