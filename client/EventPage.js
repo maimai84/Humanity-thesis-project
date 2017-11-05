@@ -107,27 +107,6 @@ showEv(){
     )
   }
 }
-const styles = StyleSheet.create(
-   {
-        container: {
-    
-            fontSize:20,
-            lineHeight: 24,
-            color: "black"
-        }
-//         container1: {  
-//             fontSize: 14,
-//             lineHeight: 24,
-//             color: "blue"
-//         },
-//         cont: {
-//             backgroundColor:"#99ceff",
-//             width:350,
-//             marginLeft:0,
-//             marginRight:0
-     
-//         //    justifyContent: 'space-between'
-//         }
-   });
+
 
 
