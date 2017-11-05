@@ -9,10 +9,12 @@ import allStyle from "./style.js";
 export default class Orgprofile extends React.Component {
 
   constructor(props) {
+    console.log(props)
     super(props);
     this.state = {
       "org_id" : props.org_id,
-      "orgDetails" : -1
+      "orgDetails" : -1,
+
     };
     console.log(this.state);
     fetch('https://thawing-garden-23809.herokuapp.com/orgs/orgbyid', {
@@ -38,9 +40,9 @@ export default class Orgprofile extends React.Component {
         console.log(res);
       });
   }
-  myFunction(){
-    return <Createevents/>
-  }
+  // myFunction(){
+  //   return <Createevents/>
+  // }
   render() {
     if (this.state.orgDetails !== -1) {
       return (
@@ -48,9 +50,10 @@ export default class Orgprofile extends React.Component {
         <Text>
           {this.props.info[0].name}
         </Text>
-        <Button title="createevent" onPress={this.myFunction.bind(this)}/>
+        
         </View>
       );
+
 
     }
 
@@ -58,6 +61,7 @@ export default class Orgprofile extends React.Component {
       <View >
         <Text>
           this is org profile {this.state.org_id}
+          // <Button title="createevent" onPress={this.myFunction.bind(this)}/>
         </Text>
       </View>
     );
