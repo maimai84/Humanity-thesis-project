@@ -9,14 +9,14 @@ import App from '../App';
 
 
 
-export default class Navbar extends React.Component {
 
+export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
      type: props.profile,
      info: props.info,
-     myEvents: props.events.name,
+     myEvents: props.events,
      allEvents: [],
      showProfile:true,
      showEvents:false,
@@ -25,9 +25,9 @@ export default class Navbar extends React.Component {
     this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
   borderRadius: 2,
-      backgroundColor: '#00bfff',}} >
+      backgroundColor: '#00bfff'}} >
   			  <Text>             </Text>
-      	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
+      	 <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
       	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.getEvents.bind(this)}><Text>FIND EVENTS</Text></TouchableOpacity>
       		<Text>                 </Text>
@@ -49,7 +49,7 @@ getEvents () {
       console.error(error);
      });
 }
- showevents(){
+ showMyEvents(){
  	
  }
  showprofile(){
@@ -73,7 +73,7 @@ getEvents () {
 
    navb() {
    	if(this.state.type === "user" && this.state.showProfile){
-   	return  <UserProfile information={this.state.info}/>
+   	return  <UserProfile events={this.state.info.events}/>
    	}else if(this.state.showEvents){
    	return  <List events = {this.state.allEvents}/>
    	}
@@ -90,9 +90,8 @@ getEvents () {
  		</View>
 
  		)
-  }  
+  }
+
+  
 }
-// <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
-//           <Button  style = {{width: 50, height: 70}} title="join" onPress = {this.myFunctions.bind(this)} />
-//            <Text>                          </Text>
-//           <Button style = {{width: 50, height: 70}} title="unjoin" onPress = {this.myUnFunctions.bind(this)} /></View>
+

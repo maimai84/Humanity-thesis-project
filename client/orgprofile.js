@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View} from "react-native";
 import allStyle from "./style.js";
 
+
 // const styles = StyleSheet.create(allStyle.userprofile);
 
 
@@ -37,6 +38,9 @@ export default class Orgprofile extends React.Component {
         console.log(res);
       });
   }
+  myFunction(){
+    return <Createevents/>
+  }
   render() {
     if (this.state.orgDetails !== -1) {
       return (
@@ -44,6 +48,7 @@ export default class Orgprofile extends React.Component {
         <Text>
           {this.props.info[0].name}
         </Text>
+        <Button title="createevent" onPress={this.myFunction.bind(this)}/>
         </View>
       );
 

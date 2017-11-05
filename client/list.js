@@ -1,5 +1,5 @@
 import React from "react";
-import {  View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight, Image} from 'react-native'
+import {View, StyleSheet, Text ,TouchableOpacity, TouchableHighlight, Image} from 'react-native'
 import Entryevent from './entryevent'
 import EventPage from './EventPage';
 import OrgProfile from './orgprofile';
@@ -19,10 +19,16 @@ export default class List extends React.Component {
     render() {
         return(
             <View>
-            <Image source={require("../images/blue.jpg")} >
+                
+             <Image source={require("../images/blue.jpg")} >
+         
               {this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event}/> ))}
+              
               </Image>
+         
             </View>
+
+          
     )
   }
 }

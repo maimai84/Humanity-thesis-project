@@ -31,9 +31,12 @@ export default class Entryevent extends React.Component {
   
   render() {
     return(
+     
       <View style = {{marginLeft:50,marginTop:30}}>
        {this.callEvPage(this.props.event)}
       </View>
+       
+
     )
   }
 }
