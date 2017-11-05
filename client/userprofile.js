@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableHighLight, Image, Button
 } from 'react-native';
 import UserEditProf from './userEditProf';
 import conf from '../config.js';
+import MyEvents from './myEvents'
 
 export default class UserProfile extends React.Component {
   constructor(props) {
@@ -11,7 +12,9 @@ export default class UserProfile extends React.Component {
       this.state= {
         events : props.events,
         information: {},
-        editprofile:false
+        editprofile:false,
+        showEvents: false,
+        tag: props.tag
       }
       fetch(conf.url + '/users/userinfo',{
         method:'GET'
@@ -33,7 +36,7 @@ export default class UserProfile extends React.Component {
       this.setState({editprofile:true});
     }
     showMyEvents(){
-
+      this.setState({showEvents: true});
     }
 
     editProfile(){
@@ -64,13 +67,17 @@ export default class UserProfile extends React.Component {
         </View>
 
       
-      if(this.state.editprofile){
+      if(this.state.editprofile && !this.state.showEvents){
         return <UserEditProf/>;
       }
-
+      else if(this.state.showEvents && !this.state.editprofile){
+        return <MyEvents events = {this.state.events} tag = {this.state.tag}/>
+      }
+    else{
       return profile;
-
     }
+  }
+    
 
     render() {
     return (
