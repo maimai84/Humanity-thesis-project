@@ -9,9 +9,7 @@ export default class List extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      eventlist : props.events,
-      eventPage : -1,
-      OrgID:-1
+    tag: props.tag
     };
   }
   
@@ -19,11 +17,8 @@ export default class List extends React.Component {
     render() {
         return(
             <View>
-                
-             <Image source={require("../images/blue.jpg")} >
-         
-              {this.state.eventlist.map((event, index) => (<Entryevent key = {index} event = {event}/> ))}
-              
+              <Image source={require("../images/blue.jpg")} >
+              {this.props.events.map((event, index) => (<Entryevent key = {index} event = {event} tag={this.state.tag}/> ))}
               </Image>
          
             </View>
