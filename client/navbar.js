@@ -27,7 +27,7 @@ export default class Navbar extends React.Component {
   borderRadius: 2,
       backgroundColor: '#00bfff'}} >
   			  <Text>             </Text>
-      	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
+      	 <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
       	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.getEvents.bind(this)}><Text>FIND EVENTS</Text></TouchableOpacity>
       		<Text>                 </Text>
