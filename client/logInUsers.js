@@ -51,7 +51,7 @@ export default class LogInUsers extends React.Component {
 goToProfile () {
 
   if(this.state.signedIn){
-    return <Navbar info = {this.state.userInfo} profile = {"user"} events = {this.state.userInfo.events}/>
+    return <Navbar info = {this.state.userInfo} profile = "user" events = {this.state.userInfo.events}/>
   } else {
     return (<View>
       <Image source={require("../images/blue.jpg")} > 
