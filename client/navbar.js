@@ -19,12 +19,9 @@ export default class Navbar extends React.Component {
      myEvents: props.events,
      allEvents: [],
      showProfile:true,
-     showOrgProfile: true,
-     showOrgEvents: false,
      showEvents:false,
      getOut: false
     };
-
     this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
     borderRadius: 2,
@@ -52,28 +49,17 @@ getEvents () {
       console.error(error);
      });
 }
- 
+ showMyEvents(){
+ 	
+ }
  showprofile(){
   this.setState({showProfile: true})
   this.setState({showEvents: false})
  }
-showOrgProfile(){
-  this.setState({showOrgProfile: true})
-  this.setState({showEvents: false})
- }
-
  logout(){
   fetch(conf.url + '/users/signout',
       {method:'GET'})
   this.setState({showProfile: false})
-  this.setState({showEvents: false})
-  this.setState({getOut: true})
- }
-
-  orgLogout(){
-  fetch(conf.url + '/orgs/signout',
-      {method:'GET'})
-  this.setState({showOrgProfile: false})
   this.setState({showEvents: false})
   this.setState({getOut: true})
  }
@@ -83,15 +69,6 @@ showOrgProfile(){
       return this.nav;
     }
     return null;
-  }
-
-  userOrOrg(){
-    
-      
-    if(this.state.type === "org")
-      return this.navbOrg()
-    else if(this.state.type === "user")
-      return this.navb()
   }
 
    navb() {
@@ -105,20 +82,11 @@ showOrgProfile(){
     }
   }
 
-  navbOrg() {
-    if(this.state.type === "org" && this.state.showOrgProfile){
-    return  <OrgProfile information = {this.state.info} events = {this.state.events} tag = "orgEvents"/>
-    }
-     if(this.state.getOut && !this.state.showProfile || !this.state.showEvents){
-      return <App/>
-    }
-  }
-
  render() {
  	return (
  		<View>
     {this.showNav()}
- 		<View>{this.userOrOrg()}</View>
+ 		<View>{this.navb()}</View>
  		</View>
 
  		)
