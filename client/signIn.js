@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView,Image} from 'react-native';
 import LogInUsers from './logInUsers';
 import LogInOrgs from './logInOrgs';
 
@@ -25,13 +25,20 @@ export default class SignIn extends React.Component {
     Greeting() {
  
   const mainComponent =  
-    <View style = {styles.container}>
-      <TouchableOpacity onPress = {this.SignUp.bind(this)} style = {{marginTop:300 }}>
-        <Text>USER </Text>
+    <View >
+     <Image source={require("../images/blue.jpg")} >  
+       <View style = {styles.textcontaniar}>
+      <TouchableOpacity onPress = {this.SignUp.bind(this)} style = {{marginTop:200 }}>
+      
+        <Text style = {styles.con}> USER </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress = {this.Sign.bind(this)} style = {{marginTop:100 }}>
-        <Text> ORG </Text>
+      </View> 
+      <View style = {styles.textcontaniar}>
+      <TouchableOpacity onPress = {this.Sign.bind(this)}style = {{marginTop:50 }} >
+        <Text style = {styles.con}> ORG </Text>
       </TouchableOpacity>
+      </View>
+      </Image>
     </View>
 
         if (this.state.showUser && !this.state.mainComp && !this.state.showOrg) {
@@ -60,52 +67,19 @@ export default class SignIn extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-
-  },
-});
-
-  const styles = StyleSheet.create({
-     container:{
-         flex:1
-     },
-   ImageBackground: {
-     flex: 1,
-    width:400,
-
-    alignSelf: 'stretch',
-  
-  container: {
-    alignItems: 'center',
-      justifyContent: 'center',
-   },
     con:{
    
   textAlign:'center',
    justifyContent: 'center',
-    color:'blue',
+    color:'white',
     fontSize:30,
     fontWeight:'bold',
-    fontStyle:'italic',
-    //  borderLeftWidth:2,
-   // borderRightWidth:2
+    fontStyle:'italic'
   },
    textcontaniar:{
-    padding:10,
-    borderColor:'#fff',
-     // borderWidth:1,
-    backgroundColor:'white',
-    // textShadowOffset:{width:0.5,heigth:0.5},
-    // textShadowRadius:5,
-     margin:10,
-     marginLeft:80,
-      marginRight:80,
-     borderBottomLeftRadius:30,
-      borderTopLeftRadius:30,
-      borderTopRightRadius:30,
-    borderBottomRightRadius:30
+     marginTop:15,
+     marginLeft:50,
+      marginRight:170,
   
    }
+});
