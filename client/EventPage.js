@@ -5,7 +5,6 @@ export default class EventPage extends React.Component {
   constructor(props) {
     super(props); 
         this.state = {
-      
         event: props.event,
         tag: props.tag,
         joined:false,
@@ -16,10 +15,12 @@ export default class EventPage extends React.Component {
       this.onJoin();
       this.setState({joined: true});
   }
-  myUnFunctions(){
+
+   myUnFunctions(){
       this.onUnJoin();
       this.setState({unjoined: true});
   }
+
   onJoin() {
       fetch(conf.url + '/events/join', {
       method: 'POST',
@@ -42,6 +43,7 @@ export default class EventPage extends React.Component {
         console.error(error);
       });
 }
+
 onUnJoin() {
       fetch(conf.url + '/events/unjoin', {
       method: 'DELETE',
@@ -88,7 +90,8 @@ showEv(){
         <Text>{this.props.event.location}</Text>
         <Text>{this.props.event.time}</Text> 
         <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
-          <Button title="join" onPress = {this.myFunctions.bind(this)} /><Text>               </Text>
+          <Button title="join" onPress = {this.myFunctions.bind(this)} />
+          <Text>               </Text>
           </View>
         </TouchableOpacity> 
         </Image>
