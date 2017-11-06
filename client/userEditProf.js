@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, View, TextInput, Button} from "react-native";
-import conf from "../config"
+import conf from "../config";
+import UserProfile from './userprofile';
+
                 
 export default class UserEditProf extends React.Component {
   constructor (props) {
@@ -8,12 +10,14 @@ export default class UserEditProf extends React.Component {
     this.state = {
       username: "",
       email: "",
-      password: ""
+      age:"",
+      password: "",
+      submitEdite : false 
     };
   }
 
   onUpdate () {
-    fetch(conf.url + 'users/editprofile', {
+    fetch(conf.url + '/users/editprofile', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -22,12 +26,14 @@ export default class UserEditProf extends React.Component {
       body: JSON.stringify({
         username: this.state.username,
         email: this.state.email,
+        age: this.state.age,
         password:this.state.password
       })
     })
       .then((response) => console.log(response))
-      .then(({data}) => {
+      .then((data) => {
        console.log(data);
+       this.setState({submitEdite:true});
       })
       .catch((error) => {
         console.error(error);
@@ -35,8 +41,8 @@ export default class UserEditProf extends React.Component {
   }
 
   render() {
-    return (
-      <View style = {{marginTop:200, alignItems: "center" }}>
+
+    const editprofile = <View style = {{marginTop:200, alignItems: "center" }}>
       <Text style={{fontWeight: "bold", textAlign: 'center', marginBottom: 10}}> update my profile data </Text>
       
       <Text style = {{marginRight:130}}>Update Username:</Text>
@@ -55,6 +61,15 @@ export default class UserEditProf extends React.Component {
         autoCapitalize = "none"
         onChangeText={(email) => this.setState({email})}
       />
+      <Text style = {{marginRight:160}}>Update Age:</Text>
+       <TextInput
+        style={{height: 50, width: 200}}
+        placeholder="Enter New Age"
+        returnKeyType = "next"
+        keyboardType = "phone"
+        autoCapitalize = "none"
+        onChangeText={(age) => this.setState({age})}
+      />
       <Text style = {{marginRight:130}}>Update Password:</Text>
       <TextInput
         style={{height: 50, width: 200}}
@@ -65,6 +80,11 @@ export default class UserEditProf extends React.Component {
       />
       <Button title = "submit" onPress = {this.onUpdate.bind(this)} />
     </View>
-    );
+
+    if(this.state.submitEdite){
+      return <UserProfile/>;
+    }
+    return editprofile;
+  }  
+    
   }
-}
