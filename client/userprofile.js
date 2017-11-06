@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableHighLight, Image, Button
 } from 'react-native';
 import UserEditProf from './userEditProf';
 import conf from '../config.js';
-import MyEvents from './myEvents'
+// import MyEvents from './myEvents'
 
 export default class UserProfile extends React.Component {
   constructor(props) {

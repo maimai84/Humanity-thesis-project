@@ -6,8 +6,9 @@ import conf from '../config.js'
 import UserProfile from './userprofile';
 import OrgProfile from './orgprofile';
 import List from './list';
-
-
+import UserEditProf from './userEditProf'
+import OrgEditProf from './orgEditProf'
+import CreateEvent from './createevent'
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -107,10 +108,14 @@ export default class Navbar extends React.Component {
       return <List events = {this.state.myEvents} tag = "myEvents"/> //something to show my events
     // edit profile 
     } else if (this.state.showEditProfile) {
-      return 
+      if (this.state.user) {
+        return <UserEditProf />
+      } else if (this.state.org) {
+        return <OrgEditProf />
+      }
     //create event => org 
     } else if (this.state.showCreateEvent) {
-      return ;//<create event />
+      return <CreateEvent />
     } else {
       logOut();
     } 
