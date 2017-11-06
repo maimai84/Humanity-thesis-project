@@ -20,15 +20,17 @@ export default class Navbar extends React.Component {
      allEvents: [],
      showProfile:true,
      showOrgProfile: true,
+     showOrgEvents: false,
      showEvents:false,
      getOut: false
     };
+
     this.nav = <View style={{flexDirection: 'row',
     borderColor: 'black',
     borderRadius: 2,
       backgroundColor: '#00bfff'}} >
   			  <Text>             </Text>
-      	<TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
+      	 <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showprofile.bind(this)}><Text>PROFILE</Text></TouchableOpacity>
       		<Text>                  </Text>
       	<TouchableOpacity style = {{marginTop: 30}} onPress = {this.getEvents.bind(this)}><Text>FIND EVENTS</Text></TouchableOpacity>
       		<Text>                 </Text>
@@ -84,10 +86,12 @@ showOrgProfile(){
   }
 
   userOrOrg(){
-    if(this.state.type === "user")
-      return this.navb()
-    else if(this.state.type === "org")
+    
+      
+    if(this.state.type === "org")
       return this.navbOrg()
+    else if(this.state.type === "user")
+      return this.navb()
   }
 
    navb() {
@@ -103,9 +107,7 @@ showOrgProfile(){
 
   navbOrg() {
     if(this.state.type === "org" && this.state.showOrgProfile){
-    return  <OrgProfile events={this.state.myEvents} tag = "myEvents"/>
-    }else if(this.state.showEvents){
-    return  <List events = {this.state.allEvents} tag = "allEvents"/>
+    return  <OrgProfile information = {this.state.info} events = {this.state.events} tag = "orgEvents"/>
     }
      if(this.state.getOut && !this.state.showProfile || !this.state.showEvents){
       return <App/>
