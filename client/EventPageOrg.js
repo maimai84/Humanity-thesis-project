@@ -5,7 +5,7 @@ export default class EventPageOrg extends React.Component {
   constructor(props) {
     super(props); 
         this.state = {
-        event: props.events,
+        event: props.event,
         tag: props.tag,
         deleted:false
         };
