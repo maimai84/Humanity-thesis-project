@@ -81,4 +81,3 @@ export default class EventPageOrg extends React.Component {
   }
 
 }
-

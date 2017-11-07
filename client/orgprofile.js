@@ -7,7 +7,6 @@ import MyEvents from './myEvents'
 
 
 export default class Orgprofile extends React.Component {
-
   constructor(props) {
       super(props)
       this.state= {
@@ -37,10 +36,11 @@ export default class Orgprofile extends React.Component {
       props.showMyEvents();
     }
   }
+    
 
-
-    editProfile(){
-      var profile = <View>
+    render() {
+    return (
+       <View>
       
       <View style= {{ alignItems:"center",borderColor: 'black', borderRadius: 2,backgroundColor: '#87cefa'}}>
          <Text style = {{marginTop: 20}}>Welcome {this.state.information.name}{'\n'}{'\n'}</Text>
@@ -65,16 +65,8 @@ export default class Orgprofile extends React.Component {
          </Image>
                            
         </View>
-
-  }
-    
-
-    render() {
-    return (
-      <View>
-      {this.editProfile()}
-      </View>
     
     );
   }
+
 }
