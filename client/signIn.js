@@ -65,7 +65,6 @@ export default class SignIn extends React.Component {
     }
 
 }
-
 const styles = StyleSheet.create({
     con:{
    

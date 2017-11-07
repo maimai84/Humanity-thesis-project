@@ -45,8 +45,9 @@ export default class logInOrgs extends React.Component {
   
 
 goToProfile () {
-  if(this.state.signedIn)
+  if(this.state.signedIn){
     return <Navbar info = {this.state.orgInfo} profile = {"org"} events = {this.state.orgInfo.events}/>;
+  }
 
   else{
     return(
