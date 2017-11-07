@@ -30,6 +30,7 @@ onSignUp () {
   })
 }) .then((response) => console.log(response))
       .then((data) => {
+        this.props.show("showSignInUser");
        console.log(data)
       })
       .catch((error) => {
@@ -37,19 +38,11 @@ onSignUp () {
       });
 }
 
-    myFunctions(){
-        this.onSignUp();
-        this.setState({signedUp: true});
-    }
 
-    goToLogIn () {
-        if(this.state.signedUp)
-            return <LogInUsers/>;
-
-
-  else{
-    return( 
-    <View>
+    render() {
+        return (
+            <View>
+               <View>
         <Image source={require("../images/blue.jpg")} > 
           <View style = {{marginTop:50, marginRight: 50 ,marginLeft: 90}}>
    
@@ -90,21 +83,13 @@ onSignUp () {
           />
    
         <View style={{marginLeft: 10,marginRight: 140}}>
-        <Button title = "submit" onPress = {this.myFunctions.bind(this)} />
+        <Button title = "submit" onPress = {this.onSignUp.bind(this)} />
             </View>
+            <Text>{'\n'}{'\n'}</Text>
+       <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignUp")}/>
           </View>
         </Image>
-      </View>)
-    }
-  }
-
-
-
-
-    render() {
-        return (
-            <View>
-                {this.goToLogIn()}
+      </View>
             </View>
         );
     }

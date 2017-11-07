@@ -9,7 +9,9 @@ export default class OrgEditProf extends React.Component {
       name: "",
       email: "",
       password: "",
-      description : ""
+      description : "",
+      submitEdite : false ,
+      data : {}
     };
   }
 
@@ -29,14 +31,23 @@ export default class OrgEditProf extends React.Component {
     })
       .then((response) => console.log(response))
       .then(({data}) => {
+        this.setState({data: data})
+        this.setState({submitEdite:true});
        console.log(data);
       })
       .catch((error) => {
         console.error(error);
       });
   }
+  
+ 
 
   render() {
+     if (this.state.submitEdite) {
+      this.props.showProfile(this.state.data);
+      return null;
+    }
+
     return (
      <View>
       <Image source={require("../images/blue.jpg")} > 

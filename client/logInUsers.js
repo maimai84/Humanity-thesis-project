@@ -39,9 +39,9 @@ export default class LogInUsers extends React.Component {
               this.setState({userInfo:data});
               this.setState({signedIn: true});
           })
-            .catch((error) => {
-                console.error(error);
-            });
+          .catch((error) => {
+              console.error(error);
+          });
     }
 
 
@@ -55,7 +55,7 @@ export default class LogInUsers extends React.Component {
 goToProfile () {
 
   if(this.state.signedIn){
-    return <Navbar info = {this.state.userInfo} profile = {"user"} signOut = {this.signOut.bind(this)} events = {this.state.userInfo.events} />
+    return <Navbar info = {this.state.userInfo} profile = {"user"} signOut = {this.signOut.bind(this)} />
   } else {
     return (<View>
       <Image source={require("../images/blue.jpg")} > 
@@ -81,6 +81,8 @@ goToProfile () {
             <View style={{marginLeft: 10,marginRight: 140}}>
             <Button title = "submit" onPress = {this.submitSignIn.bind(this)}/>
             </View>
+            <Text>{'\n'}{'\n'}</Text>
+       <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignIn")}/>
           </View>
           </Image>
           </View>)

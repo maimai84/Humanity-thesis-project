@@ -1,12 +1,12 @@
 
 import React from "react";
 import { StyleSheet, Text, TextInput, View,TouchableOpacity, Button,Image} from "react-native";
-import OrgProfile from "./orgprofile";
+
 import Navbar from "./navbar";
 
 import conf from '../config.js';
 
-export default class logInOrgs extends React.Component {
+export default class LogInOrgs extends React.Component {
 
   constructor(props) {
     super(props);
@@ -78,6 +78,8 @@ goToProfile () {
         <View style={{marginLeft: 10,marginRight: 140}}>
         <Button title = "submit" onPress = {this.submitSignIn.bind(this)}/>
         </View>
+        <Text>{'\n'}{'\n'}</Text>
+       <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignIn")}/>
         </View>
         </Image>
       </View>)

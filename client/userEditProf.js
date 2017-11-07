@@ -12,7 +12,8 @@ export default class UserEditProf extends React.Component {
       email: "",
       age:"",
       password: "",
-      submitEdite : false 
+      submitEdite : false ,
+      data : {} 
     };
   }
 
@@ -30,9 +31,10 @@ export default class UserEditProf extends React.Component {
         password:this.state.password
       })
     })
-      .then((response) => console.log(response))
-      .then((data) => {
-       console.log(data);
+      .then((response) => response.json())
+      .then((res) => {
+       console.log(res);
+       this.setState({data: res.data})
        this.setState({submitEdite:true});
       })
       .catch((error) => {
@@ -41,8 +43,12 @@ export default class UserEditProf extends React.Component {
   }
 
   render() {
+    if (this.state.submitEdite) {
+      this.props.showProfile(this.state.data);
+      return null;
+    }
 
-    const editprofile =<View>
+    const editprofile = <View>
       <Image source={require("../images/blue.jpg")} > 
       <View style = {{marginTop:10, marginRight: 50 ,marginLeft: 90}}>
           <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:25,color:"white"}}> 
@@ -88,10 +94,6 @@ export default class UserEditProf extends React.Component {
           </Image>
           </View>
 
-
-    if(this.state.submitEdite){
-      return <UserProfile/>;
-    }
     return editprofile;
   }  
     

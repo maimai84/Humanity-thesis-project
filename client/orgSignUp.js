@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, TextInput, KeyboardAvoidingView, Button,Image} from "react-native";
-import LogInOrgs from "./logInOrgs";
+
 import conf from '../config.js';
 
 export default class OrgSignUp extends React.Component {
@@ -32,6 +32,7 @@ export default class OrgSignUp extends React.Component {
     })
     .then((response) => response.json())
     .then((data) => {
+      this.props.show("showSignInOrg");
      console.log(data)
     })
     .catch((error) => {
@@ -39,12 +40,11 @@ export default class OrgSignUp extends React.Component {
     });
   }
 
-  goToLogIn () {
-    if (this.state.signedUp) {
-      return (<LogInOrgs/>);
-    } else { 
-      return (
-        <View>
+
+    render() {
+        return (
+            <View>
+                <View>
           <Image source={require("../images/blue.jpg")} > 
             <View style = {{marginTop:50, marginRight: 50 ,marginLeft: 90}}>
       
@@ -86,17 +86,11 @@ export default class OrgSignUp extends React.Component {
           <View style={{marginLeft: 10,marginRight: 140}}>
           <Button title = "submit" onPress = {this.onSignUp.bind(this)}/>
           </View>
+          <Text>{'\n'}{'\n'}</Text>
+       <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignUp")}/>
           </View>
           </Image>
-          </View>)
-    
-        }
-    }
-
-    render() {
-        return (
-            <View>
-                { this.goToLogIn() }
+          </View>
             </View>
         );
     }
