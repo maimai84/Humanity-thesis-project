@@ -36,7 +36,7 @@ export default class List extends React.Component {
         return(
             <View>
               <Image source={require("../images/blue.jpg")} >
-              {this.state.events.map((event, index) => (<Entryevent key = {index} event = {event} tag={this.state.tag}/> ))}
+              {this.state.events.map((event, index) => (<Entryevent key = {index} event = {event} showEventPage = {this.props.showEventPage}  showEventPageOrg = {this.props.showEventPageOrg} tag={this.state.tag}/> ))}
               </Image>
          
             </View>       
