@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity, Image} from 'react-native';
 
@@ -15,16 +16,13 @@ import UserEditProf from './userEditProf';
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log(this.props.profile);
-    console.log("user");
     this.out = props.signOut ;
     this.state = {
      profile: props.profile ,
      user: props.profile == "user",
      org: props.profile == "org" ,
      info: props.info,
-     myEvents: props.events,
+     myEvents: props.info.events,
      allEvents: [],
      showEditProfile:false,  //edit profile 
      showCreateEvent:false,  //create event
@@ -55,7 +53,11 @@ export default class Navbar extends React.Component {
     this.setState({showMyEvents : true});
   }
 
-  showProfile () {
+  showProfile (prop) {
+    if (prop) {
+      this.setState({information : prop});
+      if (prop.events) this.setState({myEvents :prop.events});
+    }
     this.state[this.state.current] = false ;
     this.setState({current : "showProfile"});
     this.setState({showProfile : true});
@@ -80,9 +82,9 @@ export default class Navbar extends React.Component {
 
   logout () {
     this.out();
-      this.state[this.state.current] = false ;
-      this.setState({current : "getOut"});
-      this.setState({getOut : true});
+      // this.state[this.state.current] = false ;
+      // this.setState({current : "getOut"});
+      // this.setState({getOut : true});
     //and call some function from the sign in page ;
     if (this.state.user) {
       fetch(conf.url + '/users/signout',
@@ -98,13 +100,10 @@ export default class Navbar extends React.Component {
   show () {
     //profile
     if (this.state.showProfile) {
-      console.log(this.state.user);
-      console.log(this.props.profile);
-      console.log("user");
       if (this.state.org) {
         return <OrgProfile information = {this.state.info} tag = "orgEvents" showEditProfile={this.showEditProfile.bind(this)} showMyEvents={this.showMyEvents.bind(this)}/>
       } else {
-        return <UserProfile tag = "myEvents" showEditProfile={this.showEditProfile.bind(this)} showMyEvents={this.showMyEvents.bind(this)} />
+        return <UserProfile information = {this.state.info} tag = "myEvents" showEditProfile={this.showEditProfile.bind(this)} showMyEvents={this.showMyEvents.bind(this)} />
       } 
     //all events => only user
     } else if (this.state.showEvents){
@@ -115,15 +114,15 @@ export default class Navbar extends React.Component {
     // edit profile 
     } else if (this.state.showEditProfile) {
       if (this.state.user) {
-        return <UserEditProf />
+        return <UserEditProf showProfile = {this.showProfile.bind(this)} />
       } else if (this.state.org) {
-        return <OrgEditProf />
+        return <OrgEditProf showProfile = {this.showProfile.bind(this)} />
       }
     //create event => org 
     } else if (this.state.showCreateEvent) {
       return <Createevents />;
-    } else if (this.state.getOut){
-      this.logout();
+    } else {
+      return null;
     } 
   }
 
