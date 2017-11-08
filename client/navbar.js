@@ -156,15 +156,15 @@ export default class Navbar extends React.Component {
               borderRadius: 2,
               backgroundColor: '#00bfff'}}
           >
-          <Text>             </Text>
+          <Text>         </Text>
           <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showProfile.bind(this)}>
             <Text>PROFILE</Text>
           </TouchableOpacity>
-          <Text>                  </Text>
+          <Text>                </Text>
           <TouchableOpacity style = {{marginTop: 30}} onPress = {this.showEvents.bind(this)}>
                     <Text>FIND EVENTS</Text>
                   </TouchableOpacity>
-                  <Text>                 </Text>
+                  <Text>               </Text>
           <TouchableOpacity style = {{marginTop: 30}} onPress = {() => {this.logout.bind(this)()}}>
             <Text>LOGOUT {'\n'}{'\n'}</Text>
           </TouchableOpacity>
@@ -182,15 +182,15 @@ export default class Navbar extends React.Component {
               borderRadius: 2,
               backgroundColor: '#00bfff'}}
           >
-          <Text>             </Text>
+          <Text>         </Text>
           <TouchableOpacity style = {{marginTop: 30,alignItems:'center'}} onPress = {this.showProfile.bind(this)}>
             <Text>PROFILE</Text>
           </TouchableOpacity>
-          <Text>                  </Text>
+          <Text>                </Text>
           <TouchableOpacity style = {{marginTop: 30}} onPress = {this.showCreateEvent.bind(this)}>
                     <Text>CREATE EVENT</Text>
                   </TouchableOpacity>
-                  <Text>                 </Text>
+                  <Text>             </Text>
           <TouchableOpacity style = {{marginTop: 30}} onPress = {() => {this.logout.bind(this)()}}>
             <Text>LOGOUT {'\n'}{'\n'}</Text>
           </TouchableOpacity>
