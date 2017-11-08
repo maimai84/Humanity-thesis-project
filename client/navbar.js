@@ -16,10 +16,6 @@ import UserEditProf from './userEditProf';
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log(props.info.events);
-    console.log('////////////////////////////////////////////////////////////');
-    console.log("user");
     this.out = props.signOut ;
     this.state = {
      profile: props.profile ,
@@ -86,9 +82,9 @@ export default class Navbar extends React.Component {
 
   logout () {
     this.out();
-      this.state[this.state.current] = false ;
-      this.setState({current : "getOut"});
-      this.setState({getOut : true});
+      // this.state[this.state.current] = false ;
+      // this.setState({current : "getOut"});
+      // this.setState({getOut : true});
     //and call some function from the sign in page ;
     if (this.state.user) {
       fetch(conf.url + '/users/signout',
@@ -125,8 +121,8 @@ export default class Navbar extends React.Component {
     //create event => org 
     } else if (this.state.showCreateEvent) {
       return <Createevents />;
-    } else if (this.state.getOut){
-      this.logout();
+    } else {
+      return null;
     } 
   }
 

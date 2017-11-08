@@ -17,7 +17,9 @@ export default class List extends React.Component {
         .then((data) => {
           console.log('------------------------------------>')
           console.log(data) 
-          this.setState({events: data[props.tag]["events"]});
+          if (Array.isArray(data[props.tag]["events"])) {
+            this.setState({events: data[props.tag]["events"]});
+          }
         })
         .catch((error) => {
           console.error(error);
