@@ -12,6 +12,7 @@ import OrgEditProf from './orgEditProf';
 import UserEditProf from './userEditProf';
 import EventPage from './EventPage';
 import EventPageOrg from './EventPageOrg';
+import UserProfileAsOrg from './UserProfileAsOrg';
 
 // const SideMenu = require('react-native-side-menu');
 
@@ -25,10 +26,12 @@ export default class Navbar extends React.Component {
      org: props.profile == "org" ,
      info: props.info,
      myEvents: props.info.events,
+     UserProfileAsOrg: {},
      allEvents: [],
      currentEvent: {},
      currentEventTag : "",  
      showEditProfile:false,    //edit profile 
+     showUserProfileAsOrg:false,    //show User Profile As Org
      showCreateEvent:false,    //create event
      showMyEvents:false,       //my events
      showProfile: true,        //profile
@@ -70,6 +73,13 @@ export default class Navbar extends React.Component {
     this.state[this.state.current] = false ;
     this.setState({current : "showMyEvents"});
     this.setState({showMyEvents : true});
+  }
+
+  showUserProfileAsOrg (user) {
+    this.state[this.state.current] = false ;
+    this.setState({UserProfileAsOrg : user});
+    this.setState({current : "showUserProfileAsOrg"});
+    this.setState({showUserProfileAsOrg : true});
   }
 
   showProfile (prop) {
@@ -137,9 +147,11 @@ export default class Navbar extends React.Component {
     } else if (this.state.showCreateEvent) {
       return <Createevents />;
     } else if (this.state.showEventPageOrg) {
-      return <EventPageOrg event = {this.state.currentEvent} />;
+      return <EventPageOrg event = {this.state.currentEvent} showUserProfile = {this.showUserProfileAsOrg.bind(this)} />;
     } else if (this.state.showEventPage) {
       return <EventPage event = {this.state.currentEvent} tag = {this.state.currentEventTag} />;
+    } else if (this.state.showUserProfileAsOrg) {
+      return <UserProfileAsOrg information = {this.state.UserProfileAsOrg} tag = {this.state.showUserProfileAsOrg} />;
     } else  {
       return null;
     } 
