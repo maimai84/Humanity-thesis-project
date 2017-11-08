@@ -10,6 +10,8 @@ import List from './list';
 import Createevents from './createevents';
 import OrgEditProf from './orgEditProf';
 import UserEditProf from './userEditProf';
+import EventPage from './EventPage';
+import EventPageOrg from './EventPageOrg';
 
 // const SideMenu = require('react-native-side-menu');
 
@@ -24,15 +26,32 @@ export default class Navbar extends React.Component {
      info: props.info,
      myEvents: props.info.events,
      allEvents: [],
-     showEditProfile:false,  //edit profile 
-     showCreateEvent:false,  //create event
-     showMyEvents:false,     //my events
-     showProfile: true,      //profile
-     showEvents:false,       //all events
-     getOut : false,  
+     currentEvent: {},
+     currentEventTag : "",  
+     showEditProfile:false,    //edit profile 
+     showCreateEvent:false,    //create event
+     showMyEvents:false,       //my events
+     showProfile: true,        //profile
+     showEvents:false,         //all events
+     showEventPage : false,    //event page
+     showEventPageOrg : false, //event page org
      current: "showProfile" 
     };
     console.log(this.state.user);
+  }
+
+  showEventPage(ev, tag){
+    this.state[this.state.current] = false ;
+    this.setState({current : "showEventPage"});
+    this.setState({showEventPage : true});
+    this.setState({currentEvent : ev});
+    this.setState({currentEventTag : tag});
+  }
+  showEventPageOrg(ev){
+    this.state[this.state.current] = false ;
+    this.setState({current : "showEventPageOrg"});
+    this.setState({showEventPageOrg : true});
+    this.setState({currentEvent : ev});
   }
 
   showEditProfile(){
@@ -82,10 +101,6 @@ export default class Navbar extends React.Component {
 
   logout () {
     this.out();
-      // this.state[this.state.current] = false ;
-      // this.setState({current : "getOut"});
-      // this.setState({getOut : true});
-    //and call some function from the sign in page ;
     if (this.state.user) {
       fetch(conf.url + '/users/signout',
         {method:'GET'})
@@ -107,10 +122,10 @@ export default class Navbar extends React.Component {
       } 
     //all events => only user
     } else if (this.state.showEvents){
-      return <List events = {this.state.allEvents} tag = "allEvents"/>
+      return <List events = {this.state.allEvents} showEventPage = {this.showEventPage.bind(this)} showEventPageOrg = {this.showEventPageOrg.bind(this)}  tag = "allEvents"/>
     //my events =< org and user
     } else if (this.state.showMyEvents){
-      return <List events = {this.state.myEvents} tag = {this.state.profile}/> //something to show my events
+      return <List events = {this.state.myEvents} showEventPage = {this.showEventPage.bind(this)}  showEventPageOrg = {this.showEventPageOrg.bind(this)} tag = {this.state.profile} /> //something to show my events
     // edit profile 
     } else if (this.state.showEditProfile) {
       if (this.state.user) {
@@ -121,7 +136,11 @@ export default class Navbar extends React.Component {
     //create event => org 
     } else if (this.state.showCreateEvent) {
       return <Createevents />;
-    } else {
+    } else if (this.state.showEventPageOrg) {
+      return <EventPageOrg event = {this.state.currentEvent} />;
+    } else if (this.state.showEventPage) {
+      return <EventPage event = {this.state.currentEvent} tag = {this.state.currentEventTag} />;
+    } else  {
       return null;
     } 
   }
