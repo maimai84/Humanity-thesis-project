@@ -47,6 +47,7 @@ onSignUp () {
           <View style = {{marginTop:50, marginRight: 50 ,marginLeft: 90}}>
    
       <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> Sign Up </Text>
+    
    
       <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Username:</Text>
       <TextInput
@@ -89,6 +90,7 @@ onSignUp () {
             <Text>{'\n'}{'\n'}</Text>
        <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignUp")}/>
           </View>
+         
           </View>
         </Image>
       </View>

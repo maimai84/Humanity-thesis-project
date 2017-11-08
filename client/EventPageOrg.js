@@ -6,7 +6,7 @@ export default class EventPageOrg extends React.Component {
     super(props); 
         this.state = {
         event: props.event,
-        tag: props.tag,
+       
         deleted:false
         };
   }
@@ -24,13 +24,9 @@ export default class EventPageOrg extends React.Component {
     })
  .then((response) => response.json())
       .then((data) => {
-       console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
-       console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
-       console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
-       console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
-       console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
+   
        console.log(data)
-       console.log(this.state.tag)
+     
       this.setState({deleted : true})
        Alert.alert( 'DELETE ', data.message, [{text: 'OK', onPress: () => console.log('OK Pressed')}], { cancelable: true } )
       })

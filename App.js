@@ -29,8 +29,8 @@ export default class App extends React.Component {
       type:"",
       info: {}
     };
-    const width = Dimensions.get('window').width
-    const height = Dimensions.get('window').height
+    // const width = Dimensions.get('window').width
+    // const height = Dimensions.get('window').height
   }
   show  (toShow)  {
     this.state[this.state.current] = false ;
