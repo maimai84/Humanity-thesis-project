@@ -31,7 +31,7 @@ export default class EventsBy extends React.Component {
     }) 
     .then((response) => response.json())
     .then((data) => {
-      if (data && data.length) {
+      if (data.done && data.events.length) {
         this.props.showEvents(data);
       } else {
         Alert.alert( 'SORRY', "no events match the filter !!", [{text: 'OK', onPress: () => console.log('OK Pressed')}, ], { cancelable: true } )
@@ -55,7 +55,7 @@ export default class EventsBy extends React.Component {
       }) 
       .then((response) => response.json())
       .then((data) => {
-        if (data && data.length) {
+        if (data.done && data.events.length) {
           this.props.showEvents(data);
         } else {
           Alert.alert( 'SORRY', "no events match the filter !!", [{text: 'OK', onPress: () => console.log('OK Pressed')}, ], { cancelable: true } )
@@ -70,7 +70,7 @@ export default class EventsBy extends React.Component {
       return (
         <View>
           <Image source={require("../images/blue.jpg")} > 
-            <View style = {{marginTop:170, marginRight: 50 ,marginLeft: 90}}>
+            <View style = {{marginTop:70, marginRight: 50 ,marginLeft: 90}}>
               <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> Submit Time </Text>
               <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>After:</Text>
               <TextInput 
@@ -92,9 +92,9 @@ export default class EventsBy extends React.Component {
               <View style={{marginLeft: 10,marginRight: 140}}>
                 <Button title = "submit" onPress = {this.submitTime.bind(this)}/>
               </View>
-            </View>
-            <View style = {{marginTop:170, marginRight: 50 ,marginLeft: 90}}>
-              <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> submit Location </Text>
+
+            
+              <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> Submit Location </Text>
               <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Location:</Text>
               <TextInput 
                 style={{height: 50, width: 200 ,alignItems: 'center'}}

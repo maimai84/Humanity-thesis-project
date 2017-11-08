@@ -167,7 +167,7 @@ export default class Navbar extends React.Component {
     } else if (this.state.showUserProfileAsOrg) {
       return <UserProfileAsOrg information = {this.state.UserProfileAsOrg} />;
     } else if (this.state.showEventsBy) {
-      return <EventsBy />;
+      return <EventsBy showEvents = {this.showEvents.bind(this)}/>;
     } else  {
       return null;
     } 
