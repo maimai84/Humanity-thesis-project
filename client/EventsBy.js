@@ -76,7 +76,7 @@ export default class EventsBy extends React.Component {
               <TextInput 
                 style={{height: 50, width: 200 ,alignItems: 'center'}}
                 returnKeyType='next'
-                placeholder="Events After"
+                placeholder="Format : yyyy-mm-dd hh:mm"
                 onChangeText={(after) => this.setState({after})}
                 value={this.state.after}
               />
@@ -84,7 +84,7 @@ export default class EventsBy extends React.Component {
               <TextInput
                 returnKeyType='go'
                 style={{height: 50, width: 200,alignItems: 'center'}}
-                placeholder="Events Before"
+                placeholder="Format : yyyy-mm-dd hh:mm"
                 secureTextEntry = {true}
                 onChangeText={(before) => this.setState({before})}
                 value={this.state.before}
@@ -99,7 +99,7 @@ export default class EventsBy extends React.Component {
               <TextInput 
                 style={{height: 50, width: 200 ,alignItems: 'center'}}
                 returnKeyType='next'
-                placeholder="Events After"
+                placeholder="location"
                 onChangeText={(location) => this.setState({location})}
                 value={this.state.location}
               />
@@ -112,4 +112,3 @@ export default class EventsBy extends React.Component {
     );
   }
 }
-
