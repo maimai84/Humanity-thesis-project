@@ -5,8 +5,8 @@ export default class EventPageOrg extends React.Component {
   constructor(props) {
     super(props); 
         this.state = {
-        event: props.events,
-        tag: props.tag,
+        event: props.event,
+       
         deleted:false
         };
   }
@@ -24,38 +24,17 @@ export default class EventPageOrg extends React.Component {
     })
  .then((response) => response.json())
       .then((data) => {
+   
        console.log(data)
-       console.log(this.state.tag)})
+     
       this.setState({deleted : true})
-       console.log(this.state.deleted)
-      //  Alert.alert( 'JOIN ', data.message, [{text: 'OK', onPress: () => console.log('OK Pressed')}, ], { cancelable: true } )
-      // })
+       Alert.alert( 'DELETE ', data.message, [{text: 'OK', onPress: () => console.log('OK Pressed')}], { cancelable: true } )
+      })
       .catch((error) => {
         console.error(error);
       });
   }
 
-// onUnJoin() {
-//       fetch(conf.url + '/events/unjoin', {
-//       method: 'DELETE',
-//       headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//   },
-//       body: JSON.stringify({
-//       id: this.state.event.id,
-//       org_id:this.state.event.org_id
-//   })
-//   })
-//  .then((response) => response.json())
-//       .then((data) => {
-//        console.log(data)
-//        Alert.alert( 'UNJOIN ', data.message, [{text: 'OK', onPress: () => console.log('OK Pressed')}, ], { cancelable: true } )
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-// }
 
   render() {
     
@@ -81,4 +60,3 @@ export default class EventPageOrg extends React.Component {
   }
 
 }
-

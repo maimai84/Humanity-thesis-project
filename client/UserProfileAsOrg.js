@@ -8,34 +8,10 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      events : props.information.events,
       information: props.information,
-      tag: props.tag
     }
-    fetch(conf.url + '/users/userinfo',{
-        method:'GET'
-      })
-       .then((response) => response.json())
-       .then((data) => {
-        console.log('----------------->.  NEW DATA')
-        console.log(data) 
-          this.setState({information: data.user})
-      })
-      .catch((error) => {
-          console.error(error);
-      });
   }
-  showEditProfile () {
-    this.props.showEditProfile();
-  }
-    
-  showMyEvents () {
-    this.props.showMyEvents();
-  }
-    
-
-  render() {
-    
+  render() {  
     return (
       <View>
     
@@ -53,13 +29,7 @@ export default class UserProfile extends React.Component {
         <Text style = {{marginTop: 20, marginLeft: 30,fontSize: 20,
         fontWeight: 'bold',color:'white'}}>Phone Number:</Text>
         <Text style = {{marginTop: 20,color:'white',fontSize: 13, marginLeft: 50,fontSize: 13 }}>0798726360</Text>
-        <View style = {{flexDirection:'row', marginTop: 50,marginLeft:30}}>
-        <Button  style = {{width: 50, height: 70}} title = "Edit Profile" onPress = {this.showEditProfile.bind(this)}/>
-        <Text>                          </Text>
-        <Button style = {{width: 50, height: 70}} title = "My Events" onPress = {this.showMyEvents.bind(this)}/>
-        </View>
        </Image>
-
     </View>
     );
   }
