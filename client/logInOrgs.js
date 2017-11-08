@@ -1,6 +1,6 @@
 
 import React from "react";
-import { StyleSheet, Alert, Text, TextInput, View,TouchableOpacity, Button,Image} from "react-native";
+import { StyleSheet, Alert, Text, TextInput, View,TouchableOpacity,KeyboardAvoidingView, Button,Image} from "react-native";
 
 import Navbar from "./navbar";
 
@@ -11,6 +11,7 @@ export default class LogInOrgs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       name:'',
       password:'',
       signedIn: false,
@@ -51,10 +52,6 @@ export default class LogInOrgs extends React.Component {
     signOut(){
       this.state.username = "";
       this.state.password = "";
-      1132
-
-
-
       this.setState({signedIn: false})
     }
   
@@ -68,8 +65,9 @@ goToProfile () {
       <View>
           <Image source={require("../images/blue.jpg")} > 
           <View style = {{marginTop:170, marginRight: 50 ,marginLeft: 90}}>
-              <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:25,color:"white"}}> Sign In </Text>
-              <Text style={{fontWeight: "bold",fontSize:15,color:"white"}}>Orgenization name:</Text>
+          
+              <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> Sign In </Text>
+              <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Orgenization name:</Text>
           <TextInput
           style={{height: 50, width: 200 ,alignItems: 'center'}}
           returnKeyType='next'
@@ -77,7 +75,7 @@ goToProfile () {
           onChangeText={(name) => this.setState({name})}
           value={this.state.username}
          />
-          <Text style={{fontWeight: "bold",fontSize:15,color:"white"}}>Password:</Text>
+          <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Password:</Text>
           <TextInput
           returnKeyType='go'
           style={{height: 50, width: 200,alignItems: 'center'}}
@@ -93,6 +91,7 @@ goToProfile () {
         <Text>{'\n'}{'\n'}</Text>
        <Button title = "BACK" style = {{marginTop:100}} onPress = {() => this.props.show("showSignIn")}/>
         </View>
+       
         </View>
         </Image>
       </View>)

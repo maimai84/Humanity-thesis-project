@@ -64,8 +64,8 @@ goToProfile () {
     return (<View>
       <Image source={require("../images/blue.jpg")} > 
       <View style = {{marginTop:170, marginRight: 50 ,marginLeft: 90}}>
-          <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:25,color:"white"}}> Sign In </Text>
-         <Text style={{fontWeight: "bold",fontSize:15,color:"white"}}>Username:</Text>
+          <Text style={{fontWeight: "bold", marginBottom: 30,fontSize:20,color:"white"}}> Sign In </Text>
+         <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Username:</Text>
           <TextInput 
               style={{height: 50, width: 200 ,alignItems: 'center'}}
               returnKeyType='next'
@@ -73,7 +73,7 @@ goToProfile () {
               onChangeText={(username) => this.setState({username})}
               value={this.state.username}
             />
-            <Text style={{fontWeight: "bold",fontSize:15,color:"white"}}>Password:</Text>
+            <Text style={{fontWeight: "bold",fontSize:13,color:"white"}}>Password:</Text>
             <TextInput
               returnKeyType='go'
               style={{height: 50, width: 200,alignItems: 'center'}}
